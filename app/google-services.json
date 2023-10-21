@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "398534263593",
+    "project_id": "proyecto-moviles-9c185",
+    "storage_bucket": "proyecto-moviles-9c185.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:398534263593:android:643afd51e259cbce802d38",
+        "android_client_info": {
+          "package_name": "com.example.construmanager"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiE8t8_GOtAPB1fS7ToyTWSfLFLnqmBUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
