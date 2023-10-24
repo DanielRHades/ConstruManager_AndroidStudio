@@ -1,5 +1,2 @@
-# ConstruManager
-This is our project (associated with two classmates) for the subject "Mobile Technologies", based on Android Studio with the Java language and with connection to Firebase for persistence in the cloud, from the fourth semester of Systems Engineering, at the Autonomous University of Bucaramanga (UNAB).
-- Daniel Leonardo Rodriguez Hernandez (Github: DanielRHades)
-- Luis Eduardo Jaimes Hernandez (Github: Hannd15)
-- Cristian Felipe Gomez Manrique (Github: Cfelipe001)
+# What is it?
+The purpose of Construmanager is to facilitate the managing of all the different materials and machinery used on a construction project. This app was made using java and Android Studio and uses Firebase to handle user authentication and for storing data on the cloud.
