@@ -16,7 +16,6 @@
         app:layout_constraintTop_toTopOf="@id/iv_register_logo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/iv_register_logo"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"/>
     <ImageView
         android:id="@+id/iv_register_logo"

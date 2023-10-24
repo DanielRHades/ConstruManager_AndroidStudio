@@ -63,7 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(RegisterActivity.this,"Ingresa una contraseña válida", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if(cPassword.equals(password) == false){
+            if(!cPassword.equals(password)){
                 Toast.makeText(RegisterActivity.this,"Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
                 return;
             }
