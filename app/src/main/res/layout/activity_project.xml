@@ -5,11 +5,7 @@
     android:background="@color/default_yellow"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context=".ProjectActivity">
-  
-    <LinearLayout
-        android:id="@+id/constrain_proyectos">
     <ImageView
         android:id="@+id/iv_logout"
         android:layout_width="40dp"
@@ -46,42 +42,13 @@
         app:layout_constraintVertical_bias="0"
         android:background="@drawable/half_top_round_bg"
         >
-        <SearchView
+        <androidx.appcompat.widget.SearchView
             android:id="@+id/sv_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/whole_round_bg"
             android:layout_margin="20dp"/>
 
-
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="TUS PROYECTOS"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="16dp"
-            android:src="@drawable/return_arrow"
-            app:layout_constraintBaseline_toTopOf="@id/constrain_proyectos" />
-
-        <SearchView
-
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-
-            />
-
-    </LinearLayout>
-            android:layout_height="match_parent"/>
     </LinearLayout>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
