@@ -25,7 +25,7 @@
             android:background="@drawable/layout_worker">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/tv_name_worker"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Nombre integrante"
@@ -35,7 +35,7 @@
                 android:padding="5dp"/>
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/tv_occupation_worker"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="- Ocupacion"
@@ -45,7 +45,7 @@
                 android:padding="5dp"/>
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/tv_rank_worker"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="- Rango"
