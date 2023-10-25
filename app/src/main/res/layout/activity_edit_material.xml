@@ -6,4 +6,67 @@
     android:layout_height="match_parent"
     tools:context=".EditMaterialActivity">
 
+    <LinearLayout
+        android:id="@+id/linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/body_activity2"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/return_arrow"
+            android:backgroundTint="#00000000" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="AGREGAR MATERIAL"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edit_txt_nombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:inputType="text"
+            android:text="NOMBRE"
+            android:layout_marginTop="30dp" />
+
+        <EditText
+            android:id="@+id/edit_txt_cantidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:inputType="number"
+            tools:text="CANTIDAD"
+            android:layout_marginTop="20dp" />
+
+        <EditText
+            android:id="@+id/edit_txt_precio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:inputType="number"
+            android:text="PRECIO/UNIDAD"
+            android:layout_marginTop="20dp" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="AGREGAR"
+            android:layout_marginTop="20dp"
+            android:background="@color/black"/>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
