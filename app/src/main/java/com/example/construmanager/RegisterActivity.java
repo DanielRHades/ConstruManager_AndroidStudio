@@ -18,7 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
-    private TextInputEditText tfEmail,tfName,tfLastName,tfJob,tfPassword,tfConfirmPassword;
+    private TextInputEditText tfEmail,tfName,tfJob,tfPassword,tfConfirmPassword;
     private Button btnLogin;
     private TextView tvGoLogin;
     private FirebaseAuth mAuth;
@@ -32,7 +32,6 @@ public class RegisterActivity extends AppCompatActivity {
         mAuth=FirebaseAuth.getInstance();
         tfEmail=findViewById(R.id.tf_email);
         tfName=findViewById(R.id.tf_name);
-        tfLastName=findViewById(R.id.tf_last_name);
         tfJob=findViewById(R.id.tf_job);
         tfPassword=findViewById(R.id.tf_password);
         tfConfirmPassword=findViewById(R.id.tf_confirm_password);
@@ -73,16 +72,16 @@ public class RegisterActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
 
                             String getName = tfName.getText().toString();
-                            String getLastName = tfLastName.getText().toString();
                             String getJob = tfJob.getText().toString();
                             String getEmail = tfEmail.getText().toString();
 
+                            Worker new_worker = new Worker(getName, getJob);
+
                             HashMap<String,Object> hashMap = new HashMap<>();
 
-                            hashMap.put("job",getJob);
+                            hashMap.put("name",new_worker.getName());
+                            hashMap.put("job",new_worker.getOccupation());
                             hashMap.put("email",getEmail);
-                            hashMap.put("last_name",getLastName);
-                            hashMap.put("name",getName);
 
                             reference.child("Users").child(getName).setValue(hashMap);
 

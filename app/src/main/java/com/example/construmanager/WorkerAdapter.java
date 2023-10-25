@@ -1,5 +1,6 @@
 package com.example.construmanager;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,25 +13,25 @@ import java.util.List;
 
 public class WorkerAdapter extends RecyclerView.Adapter<WorkerAdapter.ViewHolder> {
 
+    private Context context;
     private List<Worker> listSet;
 
-    public WorkerAdapter(List<Worker> listSet) {
+    public WorkerAdapter(Context context, List<Worker> listSet) {
+        this.context = context;
         this.listSet = listSet;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvNameWorker,tvOccupationWorker,tvRankWorker;
+        private TextView tvNameWorker,tvOccupationWorker;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvNameWorker = itemView.findViewById(R.id.tv_name_worker);
             tvOccupationWorker = itemView.findViewById(R.id.tv_occupation_worker);
-            tvRankWorker = itemView.findViewById(R.id.tv_rank_worker);
         }
 
         public void link(Worker worker) {
             tvNameWorker.setText(worker.getName());
             tvOccupationWorker.setText(worker.getOccupation());
-            tvRankWorker.setText(worker.getRank());
         }
     }
 
@@ -44,7 +45,9 @@ public class WorkerAdapter extends RecyclerView.Adapter<WorkerAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull WorkerAdapter.ViewHolder holder, int position) {
-        holder.link(listSet.get(position));
+        Worker worker = listSet.get(position);
+        holder.tvNameWorker.setText(worker.getName());
+        holder.tvOccupationWorker.setText(worker.getOccupation());
     }
 
     @Override

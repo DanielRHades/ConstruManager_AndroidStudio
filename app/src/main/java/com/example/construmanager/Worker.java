@@ -1,12 +1,11 @@
 package com.example.construmanager;
 
 public class Worker {
-    String name, occupation, rank;
+    private String name, occupation;
 
-    public Worker(String name, String occupation, String rank) {
+    public Worker(String name, String occupation) {
         this.name = name;
         this.occupation = occupation;
-        this.rank = rank;
     }
 
     public String getName() {
@@ -25,11 +24,4 @@ public class Worker {
         this.occupation = occupation;
     }
 
-    public String getRank() {
-        return rank;
-    }
-
-    public void setRank(String rank) {
-        this.rank = rank;
-    }
 }
