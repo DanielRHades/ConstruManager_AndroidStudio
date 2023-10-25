@@ -1,11 +1,7 @@
 package com.example.construmanager;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Project {
-    String name, company, address;
-    List<String> affiliates = new ArrayList<String>();
+    String name, company, address, affiliates;
 
     public String getName() {
         return name;
@@ -15,13 +11,6 @@ public class Project {
         this.name = name;
     }
 
-    public String getCompany() {
-        return company;
-    }
-
-    public void setCompany(String company) {
-        this.company = company;
-    }
 
     public String getAddress() {
         return address;
@@ -31,11 +20,11 @@ public class Project {
         this.address = address;
     }
 
-    public List<String> getAffiliates() {
+    public String getAffiliates() {
         return affiliates;
     }
 
-    public void setAffiliates(List<String> affiliates) {
+    public void setAffiliates(String affiliates) {
         this.affiliates = affiliates;
     }
 }
