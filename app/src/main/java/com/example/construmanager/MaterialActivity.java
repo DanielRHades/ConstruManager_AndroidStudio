@@ -4,8 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.widget.ImageView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -16,6 +17,7 @@ public class MaterialActivity extends AppCompatActivity {
     private ArrayList<Material> listMaterials = new ArrayList<>();
     private RecyclerView rvInfoProject;
     private FloatingActionButton fbtnAddMaterial;
+    private ImageView ivBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,7 @@ public class MaterialActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info_project);
         loadFakeDataCategories();
         associateViewXML();
+
 
         MaterialAdapter myAdapter = new MaterialAdapter(listMaterials);
 
@@ -36,6 +39,12 @@ public class MaterialActivity extends AppCompatActivity {
 
     private void associateViewXML() {
         rvInfoProject = findViewById(R.id.rv_info_project);
+        ivBack = findViewById(R.id.iv_back);
+        ivBack.setOnClickListener(v -> {
+            Intent myIntent = new Intent(MaterialActivity.this, MainActivity.class);
+            startActivity(myIntent);
+            finish();
+        });
         fbtnAddMaterial = findViewById(R.id.fbtn_add_material);
     }
 

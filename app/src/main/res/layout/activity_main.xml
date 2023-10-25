@@ -24,6 +24,11 @@
         android:layout_height="wrap_content"
         android:text="Materials"/>
     <Button
+        android:id="@+id/btn_go_workers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Workers"/>
+    <Button
         android:id="@+id/btn_go_project"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
