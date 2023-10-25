@@ -5,6 +5,12 @@ public class Material {
     Integer amountAvailable,amountPayed,amountOwed;
     Double price;
 
+    public Material(String name, Integer amountAvailable, Double price) {
+        this.name = name;
+        this.amountAvailable = amountAvailable;
+        this.price = price;
+    }
+
     public String getName() {
         return name;
     }

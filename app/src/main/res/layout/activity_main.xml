@@ -18,5 +18,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Cerrar Sesión"/>
+    <Button
+        android:id="@+id/btn_go_materials"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Materials"/>
+    <Button
+        android:id="@+id/btn_go_project"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Proyects"/>
 
 </LinearLayout>

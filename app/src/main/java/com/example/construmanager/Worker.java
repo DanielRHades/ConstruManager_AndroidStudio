@@ -3,6 +3,12 @@ package com.example.construmanager;
 public class Worker {
     String name, occupation, rank;
 
+    public Worker(String name, String occupation, String rank) {
+        this.name = name;
+        this.occupation = occupation;
+        this.rank = rank;
+    }
+
     public String getName() {
         return name;
     }

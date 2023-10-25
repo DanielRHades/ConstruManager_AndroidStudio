@@ -12,7 +12,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
     private TextView tvEmailDisplay;
-    private Button btnLogout;
+    private Button btnLogout,btnGoMaterials,btnGoProject;
     private FirebaseAuth mAuth;
     private FirebaseUser user;
 
@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         tvEmailDisplay=findViewById(R.id.tv_email_display);
         btnLogout=findViewById(R.id.btn_logout);
+        btnGoMaterials=findViewById(R.id.btn_go_materials);
+        btnGoProject=findViewById(R.id.btn_go_project);
         mAuth=FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
         if ( user == null){
@@ -37,6 +39,18 @@ public class MainActivity extends AppCompatActivity {
             // Cierra sesión y regresa el usuario al login
             mAuth.signOut();
             Intent myIntent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(myIntent);
+            finish();
+        });
+        btnGoMaterials.setOnClickListener(v -> {
+            // Manda al usuario a la vista de materials
+            Intent myIntent = new Intent(MainActivity.this, MaterialActivity.class);
+            startActivity(myIntent);
+            finish();
+        });
+        btnGoProject.setOnClickListener(v -> {
+            // Manda al usuario a la vista de projects
+            Intent myIntent = new Intent(MainActivity.this, ProjectActivity.class);
             startActivity(myIntent);
             finish();
         });
