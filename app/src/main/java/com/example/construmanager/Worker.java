@@ -1,11 +1,25 @@
 package com.example.construmanager;
 
 public class Worker {
-    private String name, occupation;
+    private String name, occupation, email;
 
-    public Worker(String name, String occupation) {
+    Worker ()
+    {
+
+    }
+
+    public Worker(String name, String occupation, String email) {
         this.name = name;
         this.occupation = occupation;
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getName() {

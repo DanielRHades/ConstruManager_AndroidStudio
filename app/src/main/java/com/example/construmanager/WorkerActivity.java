@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.Firebase;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,50 +20,32 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class WorkerActivity extends AppCompatActivity {
-
-    private ArrayList<Worker> listWorkers;
-
-    private DatabaseReference dataBase;
-    private RecyclerView rvInfoProject;
-    private WorkerAdapter myAdapter;
-    private ImageView ivBack;
-
+    RecyclerView recyclerView;
+    WorkerAdapter workerAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_project);
 
-        rvInfoProject = findViewById(R.id.rv_info_project);
-        dataBase = FirebaseDatabase.getInstance().getReference("Users");
-        rvInfoProject.setHasFixedSize(true);
-        rvInfoProject.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView = findViewById(R.id.rv_info_project);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        listWorkers = new ArrayList<>();
+        FirebaseRecyclerOptions<Worker> options =
+                new FirebaseRecyclerOptions.Builder<Worker>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Workers"), Worker.class)
+                        .build();
 
-        myAdapter = new WorkerAdapter(this, listWorkers);
-
-        rvInfoProject.setAdapter(myAdapter);
-
-        dataBase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    Worker worker = dataSnapshot.getValue(Worker.class);
-                    listWorkers.add(worker);
-                }
-
-                myAdapter.notifyDataSetChanged();
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-
+        workerAdapter = new WorkerAdapter(options);
+        recyclerView.setAdapter(workerAdapter);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        workerAdapter.startListening();
+    }
+    protected void onStop() {
+        super.onStop();
+        workerAdapter.startListening();
+    }
 }

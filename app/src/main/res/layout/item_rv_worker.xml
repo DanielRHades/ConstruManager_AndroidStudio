@@ -44,6 +44,16 @@
                 android:textColor="@color/black"
                 android:padding="5dp"/>
 
+            <TextView
+                android:id="@+id/tv_email_worker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="- Email"
+                android:textSize="16dp"
+                android:textStyle="italic"
+                android:textColor="@color/black"
+                android:padding="5dp"/>
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
