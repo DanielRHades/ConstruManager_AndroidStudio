@@ -77,9 +77,13 @@ public class RegisterActivity extends AppCompatActivity {
 
                             Worker new_worker = new Worker(name, job, this.email);
 
+                            FirebaseAuth auth = FirebaseAuth.getInstance();
+                            new_worker.setId(auth.getCurrentUser().getUid());
+
                             reference = fireDB.getReference("Workers");
 
-                            reference.child(name).setValue(new_worker);
+                            //reference.child(name).setValue(new_worker);
+                            reference.child(new_worker.getId()).child(name).setValue(new_worker);
 
                             // Si la cuenta se crea correctamente manda al usuario a main
                             Toast.makeText(RegisterActivity.this, "Cuenta creada.", Toast.LENGTH_SHORT).show();

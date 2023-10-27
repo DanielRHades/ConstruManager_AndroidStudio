@@ -11,6 +11,7 @@ import android.widget.ImageView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.Firebase;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,9 +31,11 @@ public class WorkerActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.rv_info_project);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+
         FirebaseRecyclerOptions<Worker> options =
                 new FirebaseRecyclerOptions.Builder<Worker>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Workers"), Worker.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Workers").child(auth.getCurrentUser().getUid()), Worker.class)
                         .build();
 
         workerAdapter = new WorkerAdapter(options);

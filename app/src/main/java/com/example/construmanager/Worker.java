@@ -1,7 +1,7 @@
 package com.example.construmanager;
 
 public class Worker {
-    private String name, occupation, email;
+    private String id, name, occupation, email;
 
     Worker ()
     {
@@ -36,6 +36,13 @@ public class Worker {
 
     public void setOccupation(String occupation) {
         this.occupation = occupation;
+    }
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
 }
