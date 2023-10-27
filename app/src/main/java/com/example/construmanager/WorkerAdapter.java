@@ -1,5 +1,6 @@
 package com.example.construmanager;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,48 +8,47 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class WorkerAdapter extends RecyclerView.Adapter<WorkerAdapter.ViewHolder> {
+public class WorkerAdapter extends FirebaseRecyclerAdapter<Worker,WorkerAdapter.myViewHolder>{
 
-    private List<Worker> listSet;
-
-    public WorkerAdapter(List<Worker> listSet) {
-        this.listSet = listSet;
+    /**
+     * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
+     * {@link FirebaseRecyclerOptions} for configuration options.
+     *
+     * @param options
+     */
+    public WorkerAdapter(@NonNull FirebaseRecyclerOptions<Worker> options) {
+        super(options);
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvNameWorker,tvOccupationWorker,tvRankWorker;
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            tvNameWorker = itemView.findViewById(R.id.tv_name_worker);
-            tvOccupationWorker = itemView.findViewById(R.id.tv_occupation_worker);
-            tvRankWorker = itemView.findViewById(R.id.tv_rank_worker);
-        }
-
-        public void link(Worker worker) {
-            tvNameWorker.setText(worker.getName());
-            tvOccupationWorker.setText(worker.getOccupation());
-            tvRankWorker.setText(worker.getRank());
-        }
+    @Override
+    protected void onBindViewHolder(@NonNull myViewHolder holder, int position, @NonNull Worker model) {
+        holder.name.setText(model.getName());
+        holder.occupation.setText(model.getOccupation());
+        holder.email.setText(model.getEmail());
     }
 
     @NonNull
     @Override
-    public WorkerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_rv_worker, parent, false);
-        return new ViewHolder(view);
+    public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_rv_worker,parent,false);
+        return new myViewHolder(view);
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull WorkerAdapter.ViewHolder holder, int position) {
-        holder.link(listSet.get(position));
+    class myViewHolder extends RecyclerView.ViewHolder{
+        TextView name,occupation,email;
+
+
+        public myViewHolder(@NonNull View itemView) {
+            super(itemView);
+            name = (TextView) itemView.findViewById(R.id.tv_name_worker);
+            occupation = (TextView) itemView.findViewById(R.id.tv_occupation_worker);
+            email = (TextView) itemView.findViewById(R.id.tv_email_worker);
+        }
     }
 
-    @Override
-    public int getItemCount() {
-        return listSet.size();
-    }
 }

@@ -2,23 +2,23 @@ package com.example.construmanager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.construmanager.databinding.ActivityMainBinding;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.HashMap;
-
 public class RegisterActivity extends AppCompatActivity {
-    private TextInputEditText tfEmail,tfName,tfLastName,tfJob,tfPassword,tfConfirmPassword;
+    private TextInputEditText tfEmail,tfName,tfJob,tfPassword,tfConfirmPassword;
+    String name, job, email;
     private Button btnLogin;
     private TextView tvGoLogin;
     private FirebaseAuth mAuth;
@@ -29,15 +29,14 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        mAuth=FirebaseAuth.getInstance();
-        tfEmail=findViewById(R.id.tf_email);
-        tfName=findViewById(R.id.tf_name);
-        tfLastName=findViewById(R.id.tf_last_name);
-        tfJob=findViewById(R.id.tf_job);
-        tfPassword=findViewById(R.id.tf_password);
-        tfConfirmPassword=findViewById(R.id.tf_confirm_password);
-        btnLogin=findViewById(R.id.btn_login);
-        tvGoLogin=findViewById(R.id.tv_go_login);
+        mAuth = FirebaseAuth.getInstance();
+        tfEmail = findViewById(R.id.tf_email);
+        tfName = findViewById(R.id.tf_name);
+        tfJob = findViewById(R.id.tf_job);
+        tfPassword = findViewById(R.id.tf_password);
+        tfConfirmPassword = findViewById(R.id.tf_confirm_password);
+        btnLogin = findViewById(R.id.btn_login);
+        tvGoLogin = findViewById(R.id.tv_go_login);
         fireDB = FirebaseDatabase.getInstance();
         reference = fireDB.getReference();
 
@@ -72,19 +71,15 @@ public class RegisterActivity extends AppCompatActivity {
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
 
-                            String getName = tfName.getText().toString();
-                            String getLastName = tfLastName.getText().toString();
-                            String getJob = tfJob.getText().toString();
-                            String getEmail = tfEmail.getText().toString();
+                            name = tfName.getText().toString();
+                            job = tfJob.getText().toString();
+                            this.email = tfEmail.getText().toString();
 
-                            HashMap<String,Object> hashMap = new HashMap<>();
+                            Worker new_worker = new Worker(name, job, this.email);
 
-                            hashMap.put("job",getJob);
-                            hashMap.put("email",getEmail);
-                            hashMap.put("last_name",getLastName);
-                            hashMap.put("name",getName);
+                            reference = fireDB.getReference("Workers");
 
-                            reference.child("Users").child(getName).setValue(hashMap);
+                            reference.child(name).setValue(new_worker);
 
                             // Si la cuenta se crea correctamente manda al usuario a main
                             Toast.makeText(RegisterActivity.this, "Cuenta creada.", Toast.LENGTH_SHORT).show();

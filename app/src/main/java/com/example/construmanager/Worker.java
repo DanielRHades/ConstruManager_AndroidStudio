@@ -1,12 +1,25 @@
 package com.example.construmanager;
 
 public class Worker {
-    String name, occupation, rank;
+    private String name, occupation, email;
 
-    public Worker(String name, String occupation, String rank) {
+    Worker ()
+    {
+
+    }
+
+    public Worker(String name, String occupation, String email) {
         this.name = name;
         this.occupation = occupation;
-        this.rank = rank;
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getName() {
@@ -25,11 +38,4 @@ public class Worker {
         this.occupation = occupation;
     }
 
-    public String getRank() {
-        return rank;
-    }
-
-    public void setRank(String rank) {
-        this.rank = rank;
-    }
 }

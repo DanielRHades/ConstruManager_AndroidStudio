@@ -1,5 +1,6 @@
 package com.example.construmanager;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,41 +9,43 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.Firebase;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class WorkerActivity extends AppCompatActivity {
-
-    private ArrayList<Worker> listWorkers = new ArrayList<>();
-    private RecyclerView rvInfoProject;
-    private ImageView ivBack;
-
+    RecyclerView recyclerView;
+    WorkerAdapter workerAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_project);
-        loadFakeDataCategories();
-        associateViewXML();
 
-        WorkerAdapter myAdapter = new WorkerAdapter(listWorkers);
+        recyclerView = findViewById(R.id.rv_info_project);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        rvInfoProject.setAdapter(myAdapter);
-        rvInfoProject.setLayoutManager(new LinearLayoutManager(this));
+        FirebaseRecyclerOptions<Worker> options =
+                new FirebaseRecyclerOptions.Builder<Worker>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Workers"), Worker.class)
+                        .build();
+
+        workerAdapter = new WorkerAdapter(options);
+        recyclerView.setAdapter(workerAdapter);
     }
 
-    private void associateViewXML() {
-        rvInfoProject = findViewById(R.id.rv_info_project);
-        ivBack = findViewById(R.id.iv_back);
-        ivBack.setOnClickListener(v -> {
-            Intent myIntent = new Intent(WorkerActivity.this, MainActivity.class);
-            startActivity(myIntent);
-            finish();
-        });
+    @Override
+    protected void onStart() {
+        super.onStart();
+        workerAdapter.startListening();
     }
-
-    private void loadFakeDataCategories() {
-        listWorkers.add(new Worker("Worker 1", "Occupation 1", "Rank 1"));
-        listWorkers.add(new Worker("Worker 2", "Occupation 2", "Rank 2"));
-        listWorkers.add(new Worker("Worker 3", "Occupation 3", "Rank 3"));
-        listWorkers.add(new Worker("Worker 4", "Occupation 4", "Rank 4"));
+    protected void onStop() {
+        super.onStop();
+        workerAdapter.startListening();
     }
 }
