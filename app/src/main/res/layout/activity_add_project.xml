@@ -6,4 +6,98 @@
     android:layout_height="match_parent"
     tools:context=".AddProjectActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:orientation="vertical"
+        android:background="@drawable/body_activity2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/return_arrow"
+            android:backgroundTint="#00000000"
+            app:layout_constraintTop_toTopOf="@id/textView4"
+            app:layout_constraintBottom_toBottomOf="@id/textView4"/>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AGREGAR PROYECTO"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <EditText
+            android:id="@+id/edit_txt_name_proyecto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:text="NOMBRE PROYECTO"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView4"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            android:id="@+id/edit_txt_name_empresa"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:text="NOMBRE EMPRESA"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_txt_name_proyecto"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            android:id="@+id/edit_txt_tipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:text="TIPO PROYECTO"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_txt_name_empresa"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            android:id="@+id/edit_txt_afiliados"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:text="AFILIADOS"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_txt_tipo"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            android:id="@+id/edit_txt_direccion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:text="DIRECCION"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_txt_afiliados"
+            android:layout_marginTop="20dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
