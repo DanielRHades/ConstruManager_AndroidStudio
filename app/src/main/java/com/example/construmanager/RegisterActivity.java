@@ -71,9 +71,9 @@ public class RegisterActivity extends AppCompatActivity {
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
 
-                            name = tfName.getText().toString();
-                            job = tfJob.getText().toString();
-                            this.email = tfEmail.getText().toString();
+                            name = String.valueOf(tfName.getText());
+                            job = String.valueOf(tfJob.getText());
+                            this.email = String.valueOf(tfEmail.getText());
 
                             Worker new_worker = new Worker(name, job, this.email);
 
@@ -83,11 +83,11 @@ public class RegisterActivity extends AppCompatActivity {
                             reference = fireDB.getReference("Workers");
 
                             //reference.child(name).setValue(new_worker);
-                            reference.child(new_worker.getId()).child(name).setValue(new_worker);
+                            reference.child(new_worker.getId()).setValue(new_worker);
 
                             // Si la cuenta se crea correctamente manda al usuario a main
                             Toast.makeText(RegisterActivity.this, "Cuenta creada.", Toast.LENGTH_SHORT).show();
-                            Intent myIntent = new Intent(RegisterActivity.this, MainActivity.class);
+                            Intent myIntent = new Intent(RegisterActivity.this, ProjectActivity.class);
                             startActivity(myIntent);
                             finish();
 

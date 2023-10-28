@@ -27,4 +27,12 @@ public class Project {
     public void setAffiliates(String affiliates) {
         this.affiliates = affiliates;
     }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
 }

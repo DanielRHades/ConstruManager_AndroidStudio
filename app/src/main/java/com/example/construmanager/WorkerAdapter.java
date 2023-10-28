@@ -41,8 +41,6 @@ public class WorkerAdapter extends FirebaseRecyclerAdapter<Worker,WorkerAdapter.
 
     class myViewHolder extends RecyclerView.ViewHolder{
         TextView name,occupation,email;
-
-
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.tv_name_worker);

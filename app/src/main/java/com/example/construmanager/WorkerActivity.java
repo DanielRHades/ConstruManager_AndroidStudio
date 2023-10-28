@@ -35,7 +35,7 @@ public class WorkerActivity extends AppCompatActivity {
 
         FirebaseRecyclerOptions<Worker> options =
                 new FirebaseRecyclerOptions.Builder<Worker>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Workers").child(auth.getCurrentUser().getUid()), Worker.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Workers"), Worker.class)
                         .build();
 
         workerAdapter = new WorkerAdapter(options);

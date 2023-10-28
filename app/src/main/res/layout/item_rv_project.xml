@@ -44,15 +44,16 @@
                     android:textStyle="bold|italic" />
 
                 <ImageButton
-                    android:id="@+id/imageButton"
+                    android:id="@+id/ibtn_collapse"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="@color/white"
-                    android:src="@drawable/baseline_arrow_downward_24" />
+                    android:src="@drawable/downward_arrow" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ll_info_project"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -83,7 +84,7 @@
                     android:padding="5dp"/>
 
                 <TextView
-                    android:id="@+id/tv_direction"
+                    android:id="@+id/tv_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="- Direccion"

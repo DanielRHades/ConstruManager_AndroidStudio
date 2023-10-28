@@ -4,7 +4,9 @@ public class Material {
     String name;
     Integer amountAvailable,amountPayed,amountOwed;
     Double price;
+    public Material() {
 
+    }
     public Material(String name, Integer amountAvailable, Double price) {
         this.name = name;
         this.amountAvailable = amountAvailable;

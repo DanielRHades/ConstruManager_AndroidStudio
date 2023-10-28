@@ -2,12 +2,9 @@ package com.example.construmanager;
 
 public class Worker {
     private String id, name, occupation, email;
-
-    Worker ()
-    {
+    public Worker() {
 
     }
-
     public Worker(String name, String occupation, String email) {
         this.name = name;
         this.occupation = occupation;

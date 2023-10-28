@@ -24,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
         // Comprueba si el usuario ya inicio sesión, de ser así lo manda a main
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            Intent myIntent = new Intent(LoginActivity.this, MainActivity.class);
+            Intent myIntent = new Intent(LoginActivity.this, ProjectActivity.class);
             startActivity(myIntent);
             finish();
         }
@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
                             // Si la información coincide con un usuario creado lo manda al main
                             Toast.makeText(LoginActivity.this, "Se inició sesión con éxito.",
                                     Toast.LENGTH_SHORT).show();
-                            Intent myIntent = new Intent(LoginActivity.this, MainActivity.class);
+                            Intent myIntent = new Intent(LoginActivity.this, ProjectActivity.class);
                             startActivity(myIntent);
                             finish();
                         } else {
