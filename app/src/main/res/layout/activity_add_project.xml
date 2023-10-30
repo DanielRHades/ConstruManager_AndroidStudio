@@ -19,19 +19,20 @@
         android:padding="20dp">
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/iv_back"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/return_arrow"
             android:backgroundTint="#00000000"
             app:layout_constraintTop_toTopOf="@id/textView4"
-            app:layout_constraintBottom_toBottomOf="@id/textView4"/>
+            app:layout_constraintBottom_toBottomOf="@id/textView4"
+            android:clickable="true"/>
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="AGREGAR PROYECTO"
+            android:text="CREAR PROYECTO"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -40,11 +41,11 @@
 
         <EditText
             android:id="@+id/edit_txt_name_proyecto"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="text"
-            android:text="NOMBRE PROYECTO"
+            android:hint="NOMBRE PROYECTO"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView4"
             app:layout_constraintStart_toStartOf="parent"
@@ -52,11 +53,11 @@
 
         <EditText
             android:id="@+id/edit_txt_name_empresa"
-            android:layout_width="210dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="text"
-            android:text="NOMBRE EMPRESA"
+            android:hint="NOMBRE EMPRESA"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/edit_txt_name_proyecto"
@@ -64,11 +65,11 @@
 
         <EditText
             android:id="@+id/edit_txt_tipo"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="text"
-            android:text="TIPO PROYECTO"
+            android:hint="TIPO PROYECTO"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/edit_txt_name_empresa"
@@ -76,11 +77,11 @@
 
         <EditText
             android:id="@+id/edit_txt_afiliados"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="text"
-            android:text="AFILIADOS"
+            android:hint="AFILIADOS"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/edit_txt_tipo"
@@ -88,16 +89,27 @@
 
         <EditText
             android:id="@+id/edit_txt_direccion"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="text"
-            android:text="DIRECCION"
+            android:hint="DIRECCION"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/edit_txt_afiliados"
             android:layout_marginTop="20dp"/>
+        <Button
+            android:id="@+id/btn_accept"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/edit_txt_direccion"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/default_yellow"
+            android:textColor="@color/black"
+            android:text="Aceptar"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

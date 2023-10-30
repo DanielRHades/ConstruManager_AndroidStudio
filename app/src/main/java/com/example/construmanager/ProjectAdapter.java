@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,9 +24,9 @@ public class ProjectAdapter extends FirebaseRecyclerAdapter<Project,ProjectAdapt
     public ProjectAdapter(@NonNull FirebaseRecyclerOptions<Project> options) {
         super(options);
     }
-    // Le pone el nombre de Material correspondiente a cada item
     @Override
     protected void onBindViewHolder(@NonNull ProjectAdapter.myViewHolder holder, int position, @NonNull Project model) {
+        //holder.id = model.getId();
         holder.tvNameProject.setText(model.getName());
         holder.tvCompany.setText(model.getCompany());
         holder.tvAffiliates.setText(model.getAffiliates());
@@ -39,6 +40,7 @@ public class ProjectAdapter extends FirebaseRecyclerAdapter<Project,ProjectAdapt
         return new ProjectAdapter.myViewHolder(view);
     }
     class myViewHolder extends RecyclerView.ViewHolder{
+        //String id;
         LinearLayout llInfoProject;
         TextView tvNameProject,tvCompany,tvAffiliates,tvAddress;
         ImageButton ibtnCollapse;
@@ -50,7 +52,11 @@ public class ProjectAdapter extends FirebaseRecyclerAdapter<Project,ProjectAdapt
             tvCompany = itemView.findViewById(R.id.tv_company);
             tvAffiliates = itemView.findViewById(R.id.tv_affiliates);
             tvAddress = itemView.findViewById(R.id.tv_address);
+            llInfoProject.setVisibility(View.GONE);
             isCollapsed = true;
+            /*tvNameProject.setOnClickListener(v -> {
+                Toast.makeText(tvNameProject.getContext(), id, Toast.LENGTH_SHORT).show();
+            });*/
             ibtnCollapse.setOnClickListener(v -> {
                 // Muestra el botón de editar si está oculto
                 if(isCollapsed){

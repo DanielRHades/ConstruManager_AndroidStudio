@@ -41,7 +41,8 @@
                     android:text="Nombre del proyecto"
                     android:textColor="@color/black"
                     android:textSize="22dp"
-                    android:textStyle="bold|italic" />
+                    android:textStyle="bold|italic"
+                    android:clickable="true"/>
 
                 <ImageButton
                     android:id="@+id/ibtn_collapse"

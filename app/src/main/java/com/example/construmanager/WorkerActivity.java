@@ -31,12 +31,9 @@ public class WorkerActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.rv_info_project);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-
-        FirebaseRecyclerOptions<Worker> options =
-                new FirebaseRecyclerOptions.Builder<Worker>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Workers"), Worker.class)
-                        .build();
+        FirebaseRecyclerOptions<Worker> options = new FirebaseRecyclerOptions.Builder<Worker>()
+                .setQuery(FirebaseDatabase.getInstance().getReference().child("Workers"), Worker.class)
+                .build();
 
         workerAdapter = new WorkerAdapter(options);
         recyclerView.setAdapter(workerAdapter);

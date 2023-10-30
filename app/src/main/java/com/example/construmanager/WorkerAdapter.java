@@ -48,5 +48,4 @@ public class WorkerAdapter extends FirebaseRecyclerAdapter<Worker,WorkerAdapter.
             email = (TextView) itemView.findViewById(R.id.tv_email_worker);
         }
     }
-
 }

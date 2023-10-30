@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -19,6 +20,7 @@ public class ProjectActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private ImageView ivLogout;
     private Button btnGoMaterials,btnGoWorkers;
+    private FloatingActionButton fbtnAddProject;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,13 +30,12 @@ public class ProjectActivity extends AppCompatActivity {
         btnGoMaterials = findViewById(R.id.btn_go_materials);
         btnGoWorkers = findViewById(R.id.btn_go_workers);
         recyclerView = findViewById(R.id.rv_project);
+        fbtnAddProject = findViewById(R.id.fbtn_add_project);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Actualmente no funcionando por razones desconocidas, revisar tambien el adapter.
         FirebaseRecyclerOptions<Project> options = new FirebaseRecyclerOptions.Builder<Project>()
-                .setQuery(FirebaseDatabase.getInstance().getReference()
-                        .child("Projects"), Project.class)
+                .setQuery(FirebaseDatabase.getInstance().getReference().child("Projects"), Project.class)
                 .build();
 
         projectAdapter = new ProjectAdapter(options);
@@ -53,6 +54,10 @@ public class ProjectActivity extends AppCompatActivity {
         btnGoWorkers.setOnClickListener(v -> {
             Intent myIntent = new Intent(ProjectActivity.this, WorkerActivity.class);
             startActivity(myIntent);
+        });
+        fbtnAddProject.setOnClickListener(v -> {
+            AddProjectActivity addProject = new AddProjectActivity();
+            addProject.show(getSupportFragmentManager(),"");
         });
     }
 }
