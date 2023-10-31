@@ -1,11 +1,14 @@
 package com.example.construmanager;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,7 +28,7 @@ public class ProjectAdapter extends FirebaseRecyclerAdapter<Project,ProjectAdapt
     }
     @Override
     protected void onBindViewHolder(@NonNull myViewHolder holder, int position, @NonNull Project model) {
-        //holder.id = model.getId();
+        holder.id = model.getId();
         holder.tvNameProject.setText(model.getName());
         holder.tvCompany.setText(model.getCompany());
         holder.tvAffiliates.setText(model.getAffiliates());
@@ -39,10 +42,11 @@ public class ProjectAdapter extends FirebaseRecyclerAdapter<Project,ProjectAdapt
         return new ProjectAdapter.myViewHolder(view);
     }
     class myViewHolder extends RecyclerView.ViewHolder{
-        //String id;
+        String id;
         LinearLayout llInfoProject;
         TextView tvNameProject,tvCompany,tvAffiliates,tvAddress;
         ImageView ivCollapse;
+        Button btnGoInfoProject;
         boolean isCollapsed;
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -52,12 +56,13 @@ public class ProjectAdapter extends FirebaseRecyclerAdapter<Project,ProjectAdapt
             tvAffiliates = itemView.findViewById(R.id.tv_affiliates);
             tvAddress = itemView.findViewById(R.id.tv_address);
             ivCollapse = itemView.findViewById(R.id.iv_collapse);
+            btnGoInfoProject = itemView.findViewById(R.id.btn_go_info_project);
             llInfoProject.setVisibility(View.GONE);
             isCollapsed = true;
 
-            /*tvNameProject.setOnClickListener(v -> {
+            tvNameProject.setOnClickListener(v -> {
                 Toast.makeText(tvNameProject.getContext(), id, Toast.LENGTH_SHORT).show();
-            });*/
+            });
             ivCollapse.setOnClickListener(v -> {
                 // Muestra el botón de editar si está oculto
                 if(isCollapsed){
@@ -69,6 +74,11 @@ public class ProjectAdapter extends FirebaseRecyclerAdapter<Project,ProjectAdapt
                     llInfoProject.setVisibility(View.GONE);
                     isCollapsed = true;
                 }
+            });
+            btnGoInfoProject.setOnClickListener(v -> {
+                Intent myIntent = new Intent(btnGoInfoProject.getContext(), MaterialActivity.class);
+                myIntent.putExtra("id", id);
+                btnGoInfoProject.getContext().startActivity(myIntent);
             });
         }
     }
