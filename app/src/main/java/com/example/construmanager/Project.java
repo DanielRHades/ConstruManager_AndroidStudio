@@ -3,6 +3,10 @@ package com.example.construmanager;
 public class Project {
     String id, name, company, address, affiliates;
 
+    public Project(){
+
+    }
+
     public Project(String id, String name, String company, String address, String affiliates) {
         this.id = id;
         this.name = name;

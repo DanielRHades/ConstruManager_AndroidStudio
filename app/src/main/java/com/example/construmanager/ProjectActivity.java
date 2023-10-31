@@ -32,15 +32,6 @@ public class ProjectActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.rv_project);
         fbtnAddProject = findViewById(R.id.fbtn_add_project);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        FirebaseRecyclerOptions<Project> options = new FirebaseRecyclerOptions.Builder<Project>()
-                .setQuery(FirebaseDatabase.getInstance().getReference().child("Projects"), Project.class)
-                .build();
-
-        projectAdapter = new ProjectAdapter(options);
-        recyclerView.setAdapter(projectAdapter);
-
         ivLogout.setOnClickListener(v -> {
             mAuth.signOut();
             Intent myIntent = new Intent(ProjectActivity.this, LoginActivity.class);
@@ -59,5 +50,23 @@ public class ProjectActivity extends AppCompatActivity {
             AddProjectActivity addProject = new AddProjectActivity();
             addProject.show(getSupportFragmentManager(),"");
         });
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        FirebaseRecyclerOptions<Project> options = new FirebaseRecyclerOptions.Builder<Project>()
+                .setQuery(FirebaseDatabase.getInstance().getReference().child("Projects"), Project.class)
+                .build();
+
+        projectAdapter = new ProjectAdapter(options);
+        recyclerView.setAdapter(projectAdapter);
+
+    }
+    protected void onStart() {
+        super.onStart();
+        projectAdapter.startListening();
+    }
+    protected void onStop() {
+        super.onStop();
+        projectAdapter.startListening();
     }
 }

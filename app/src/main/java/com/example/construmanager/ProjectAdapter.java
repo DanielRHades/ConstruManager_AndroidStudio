@@ -25,7 +25,7 @@ public class ProjectAdapter extends FirebaseRecyclerAdapter<Project,ProjectAdapt
         super(options);
     }
     @Override
-    protected void onBindViewHolder(@NonNull ProjectAdapter.myViewHolder holder, int position, @NonNull Project model) {
+    protected void onBindViewHolder(@NonNull myViewHolder holder, int position, @NonNull Project model) {
         //holder.id = model.getId();
         holder.tvNameProject.setText(model.getName());
         holder.tvCompany.setText(model.getCompany());
@@ -57,7 +57,7 @@ public class ProjectAdapter extends FirebaseRecyclerAdapter<Project,ProjectAdapt
             /*tvNameProject.setOnClickListener(v -> {
                 Toast.makeText(tvNameProject.getContext(), id, Toast.LENGTH_SHORT).show();
             });*/
-            ibtnCollapse.setOnClickListener(v -> {
+            /*ibtnCollapse.setOnClickListener(v -> {
                 // Muestra el botón de editar si está oculto
                 if(isCollapsed){
                     ibtnCollapse.setImageResource(R.drawable.upward_arrow);
@@ -66,7 +66,7 @@ public class ProjectAdapter extends FirebaseRecyclerAdapter<Project,ProjectAdapt
                     ibtnCollapse.setImageResource(R.drawable.downward_arrow);
                     llInfoProject.setVisibility(View.GONE);
                 }
-            });
+            });*/
         }
     }
 
