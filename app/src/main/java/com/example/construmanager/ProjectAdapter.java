@@ -3,10 +3,9 @@ package com.example.construmanager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,7 +42,7 @@ public class ProjectAdapter extends FirebaseRecyclerAdapter<Project,ProjectAdapt
         //String id;
         LinearLayout llInfoProject;
         TextView tvNameProject,tvCompany,tvAffiliates,tvAddress;
-        ImageButton ibtnCollapse;
+        ImageView ivCollapse;
         boolean isCollapsed;
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -52,21 +51,24 @@ public class ProjectAdapter extends FirebaseRecyclerAdapter<Project,ProjectAdapt
             tvCompany = itemView.findViewById(R.id.tv_company);
             tvAffiliates = itemView.findViewById(R.id.tv_affiliates);
             tvAddress = itemView.findViewById(R.id.tv_address);
+            ivCollapse = itemView.findViewById(R.id.iv_collapse);
             llInfoProject.setVisibility(View.GONE);
             isCollapsed = true;
             /*tvNameProject.setOnClickListener(v -> {
                 Toast.makeText(tvNameProject.getContext(), id, Toast.LENGTH_SHORT).show();
             });*/
-            /*ibtnCollapse.setOnClickListener(v -> {
+            ivCollapse.setOnClickListener(v -> {
                 // Muestra el botón de editar si está oculto
                 if(isCollapsed){
-                    ibtnCollapse.setImageResource(R.drawable.upward_arrow);
+                    ivCollapse.setImageResource(R.drawable.upward_arrow);
                     llInfoProject.setVisibility(View.VISIBLE);
+                    isCollapsed = false;
                 }else{
-                    ibtnCollapse.setImageResource(R.drawable.downward_arrow);
+                    ivCollapse.setImageResource(R.drawable.downward_arrow);
                     llInfoProject.setVisibility(View.GONE);
+                    isCollapsed = true;
                 }
-            });*/
+            });
         }
     }
 
