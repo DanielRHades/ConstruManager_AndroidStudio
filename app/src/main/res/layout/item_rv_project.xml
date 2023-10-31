@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:animateLayoutChanges="true"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -27,29 +28,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:weightSum="1"
                 android:orientation="horizontal"
                 android:background="@drawable/layout_bg"
                 android:layout_margin="5dp">
 
                 <TextView
                     android:id="@+id/tv_name_project"
-                    android:layout_width="300dp"
-                    android:layout_height="50dp"
-                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".9"
                     android:baselineAligned="false"
                     android:padding="10dp"
                     android:text="Nombre del proyecto"
                     android:textColor="@color/black"
                     android:textSize="22dp"
-                    android:textStyle="bold|italic" />
+                    android:textStyle="bold|italic"
+                    android:clickable="true"/>
 
-                <ImageButton
-                    android:id="@+id/ibtn_collapse"
-                    android:layout_width="80dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                <ImageView
+                    android:id="@+id/iv_collapse"
+                    android:layout_gravity="center"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_weight=".1"
                     android:backgroundTint="@color/white"
-                    android:src="@drawable/downward_arrow" />
+                    android:src="@drawable/downward_arrow"
+                    android:clickable="true"/>
             </LinearLayout>
 
             <LinearLayout

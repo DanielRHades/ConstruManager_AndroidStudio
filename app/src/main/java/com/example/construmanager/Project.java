@@ -1,7 +1,24 @@
 package com.example.construmanager;
 
 public class Project {
-    String name, company, address, affiliates;
+    String id, name, company, address, affiliates;
+    public Project(){
+    }
+    public Project(String id, String name, String company, String address, String affiliates) {
+        this.id = id;
+        this.name = name;
+        this.company = company;
+        this.address = address;
+        this.affiliates = affiliates;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

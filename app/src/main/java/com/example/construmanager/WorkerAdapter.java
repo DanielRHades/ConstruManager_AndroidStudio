@@ -43,10 +43,9 @@ public class WorkerAdapter extends FirebaseRecyclerAdapter<Worker,WorkerAdapter.
         TextView name,occupation,email;
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
-            name = (TextView) itemView.findViewById(R.id.tv_name_worker);
-            occupation = (TextView) itemView.findViewById(R.id.tv_occupation_worker);
-            email = (TextView) itemView.findViewById(R.id.tv_email_worker);
+            name = itemView.findViewById(R.id.tv_name_worker);
+            occupation = itemView.findViewById(R.id.tv_occupation_worker);
+            email = itemView.findViewById(R.id.tv_email_worker);
         }
     }
-
 }
