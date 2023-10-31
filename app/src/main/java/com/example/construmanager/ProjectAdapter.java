@@ -54,6 +54,7 @@ public class ProjectAdapter extends FirebaseRecyclerAdapter<Project,ProjectAdapt
             tvAddress = itemView.findViewById(R.id.tv_address);
             llInfoProject.setVisibility(View.GONE);
             isCollapsed = true;
+
             /*tvNameProject.setOnClickListener(v -> {
                 Toast.makeText(tvNameProject.getContext(), id, Toast.LENGTH_SHORT).show();
             });*/
