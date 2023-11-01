@@ -56,27 +56,4 @@ public class AddWorkersActivity extends DialogFragment {
         });
         return builder.create();
     }
-    // Por ahora no valida nada :3
-    /*
-    private boolean validateInputs(String name, String color) {
-
-        boolean validate = true;
-        //validaciones
-        if (name.isEmpty()) {
-            tilNameNewCategory.setError(getString(R.string.text_required));
-            validate = false;
-        } else {
-            tilNameNewCategory.setError(null);
-        }
-        if (color.isEmpty() || color.equals("Color")) {
-            txtMsgColorInput.setVisibility(View.VISIBLE);
-            txtMsgColorInput.setText(getString(R.string.text_required));
-            validate = false;
-        } else {
-            txtMsgColorInput.setVisibility(View.INVISIBLE);
-            txtMsgColorInput.setText(getString(R.string.text_required));
-        }
-
-        return validate;
-    }*/
 }

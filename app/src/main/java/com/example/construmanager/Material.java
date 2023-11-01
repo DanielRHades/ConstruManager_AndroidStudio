@@ -1,14 +1,33 @@
 package com.example.construmanager;
 
 public class Material {
-    String name;
-    Integer amountAvailable,amountPayed,amountOwed;
-    Double price;
+    String projectId,name,amountMissing,amountAvailable,amountPayed,amountOwed,price;
     public Material() {}
-    public Material(String name, Integer amountAvailable, Double price) {
+    public Material(String projectId, String name, String price) {
+        this.projectId = projectId;
         this.name = name;
-        this.amountAvailable = amountAvailable;
         this.price = price;
+    }
+    public Material(String amountAvailable, String amountMissing, String amountPayed, String amountOwed) {
+        this.amountAvailable = amountAvailable;
+        this.amountMissing = amountMissing;
+        this.amountPayed = amountPayed;
+        this.amountOwed = amountOwed;
+    }
+    public String getAmountMissing() {
+        return amountMissing;
+    }
+
+    public void setAmountMissing(String amountMissing) {
+        this.amountMissing = amountMissing;
+    }
+
+    public String getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
     }
 
     public String getName() {
@@ -19,35 +38,35 @@ public class Material {
         this.name = name;
     }
 
-    public Integer getAmountAvailable() {
+    public String getAmountAvailable() {
         return amountAvailable;
     }
 
-    public void setAmountAvailable(Integer amountAvailable) {
+    public void setAmountAvailable(String amountAvailable) {
         this.amountAvailable = amountAvailable;
     }
 
-    public Integer getAmountPayed() {
+    public String getAmountPayed() {
         return amountPayed;
     }
 
-    public void setAmountPayed(Integer amountPayed) {
+    public void setAmountPayed(String amountPayed) {
         this.amountPayed = amountPayed;
     }
 
-    public Integer getAmountOwed() {
+    public String getAmountOwed() {
         return amountOwed;
     }
 
-    public void setAmountOwed(Integer amountOwed) {
+    public void setAmountOwed(String amountOwed) {
         this.amountOwed = amountOwed;
     }
 
-    public Double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 }

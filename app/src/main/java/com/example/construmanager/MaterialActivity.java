@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class MaterialActivity extends AppCompatActivity {
@@ -16,6 +17,7 @@ public class MaterialActivity extends AppCompatActivity {
     private Button  btnGoMaterials, btnGoWorkers,btnGoStatistics;
     private RecyclerView recyclerView;
     private MaterialAdapter materialAdapter;
+    private FloatingActionButton fbtnAddMaterial;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +30,7 @@ public class MaterialActivity extends AppCompatActivity {
         btnGoMaterials.setBackgroundColor(getResources().getColor(R.color.black));
         btnGoWorkers.setBackgroundColor(getResources().getColor(R.color.disabled_grey));
         btnGoStatistics.setBackgroundColor(getResources().getColor(R.color.disabled_grey));
+        fbtnAddMaterial = findViewById(R.id.fbtn_add);
 
         btnGoWorkers.setOnClickListener(v -> {
             Intent intent = new Intent(MaterialActivity.this, WorkerActivity.class);
@@ -36,13 +39,17 @@ public class MaterialActivity extends AppCompatActivity {
             finish();
         });
 
+        fbtnAddMaterial.setOnClickListener(v -> {
+            AddMaterialActivity addMaterial = new AddMaterialActivity(projectId);
+            addMaterial.show(getSupportFragmentManager(),"");
+        });
+
         recyclerView = findViewById(R.id.rv_info_project);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         // Actualmente no funcionando por razones desconocidas, revisar tambien el adapter.
         FirebaseRecyclerOptions<Material> options = new FirebaseRecyclerOptions.Builder<Material>()
-                .setQuery(FirebaseDatabase.getInstance().getReference()
-                        .child("Projects")
-                        .child("1")
+                .setQuery(FirebaseDatabase.getInstance().getReference("Projects")
+                        .child(projectId)
                         .child("Materials"), Material.class)
                 .build();
         materialAdapter = new MaterialAdapter(options);
