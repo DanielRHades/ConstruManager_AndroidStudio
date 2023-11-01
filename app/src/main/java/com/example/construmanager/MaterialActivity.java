@@ -1,5 +1,6 @@
 package com.example.construmanager;
 
+import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,7 +26,15 @@ public class MaterialActivity extends AppCompatActivity {
         btnGoWorkers = findViewById(R.id.btn_go_workers);
         btnGoStatistics = findViewById(R.id.btn_go_statistics);
         btnGoMaterials.setBackgroundColor(getResources().getColor(R.color.black));
-        btnGoMaterials.setIco
+        btnGoWorkers.setBackgroundColor(getResources().getColor(R.color.disabled_grey));
+        btnGoStatistics.setBackgroundColor(getResources().getColor(R.color.disabled_grey));
+
+        btnGoWorkers.setOnClickListener(v -> {
+            Intent intent = new Intent(MaterialActivity.this, WorkerActivity.class);
+            intent.putExtra("id", projectId);
+            startActivity(intent);
+            finish();
+        });
 
         recyclerView = findViewById(R.id.rv_info_project);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

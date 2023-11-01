@@ -1,39 +1,33 @@
 package com.example.construmanager;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-
-package com.example.construmanager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import android.app.Dialog;
-import android.graphics.Color;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.UUID;
+import java.util.Map;
 
 public class AddWorkersActivity extends DialogFragment {
-    private String email;
+    private String email, projectId, userId;
     private EditText editTxtName;
     private ImageView ivBack;
     private Button btnAccept;
+    public AddWorkersActivity(String projectId) {
+        this.projectId = projectId;
+    }
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -47,17 +41,19 @@ public class AddWorkersActivity extends DialogFragment {
 
         builder.setView(dialogView);
         ivBack.setOnClickListener(v -> dismiss());
+        btnAccept.setOnClickListener(v -> {
+            email = String.valueOf(editTxtName.getText());
+            FirebaseDatabase instance = FirebaseDatabase.getInstance();
 
-        btnAccept.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                email = String.valueOf(editTxtName.getText());
-
-                Worker newWorker = new Worker(email);
-                FirebaseDatabase.getInstance().getReference("Projects").child(id).setValue(newProject);
-
+            Task<DataSnapshot> userWithEmail = instance.getReference("Workers").orderByChild("email").equalTo(email).get();
+            userWithEmail.addOnCompleteListener(task -> {
+                instance.getReference("Projects")
+                        .child(projectId)
+                        .child("Workers")
+                        .updateChildren((Map<String, Object>) task.getResult().getValue());
                 dismiss();
-            }
+            });
+
         });
         return builder.create();
     }
