@@ -21,7 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.Map;
 
 public class AddWorkersActivity extends DialogFragment {
-    private String email, projectId, userId;
+    private String email, projectId;
     private EditText editTxtName;
     private ImageView ivBack;
     private Button btnAccept;
@@ -53,7 +53,6 @@ public class AddWorkersActivity extends DialogFragment {
                         .updateChildren((Map<String, Object>) task.getResult().getValue());
                 dismiss();
             });
-
         });
         return builder.create();
     }
