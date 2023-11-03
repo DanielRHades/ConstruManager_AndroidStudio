@@ -21,7 +21,6 @@ public class ProjectActivity extends AppCompatActivity {
     private ProjectAdapter projectAdapter;
     private FirebaseAuth mAuth;
     private ImageView ivLogout;
-    private Button btnGoMaterials,btnGoWorkers;
     private FloatingActionButton fbtnAddProject;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +28,6 @@ public class ProjectActivity extends AppCompatActivity {
         setContentView(R.layout.activity_project);
         mAuth = FirebaseAuth.getInstance();
         ivLogout = findViewById(R.id.iv_logout);
-        btnGoMaterials = findViewById(R.id.btn_go_materials);
-        btnGoWorkers = findViewById(R.id.btn_go_workers);
         recyclerView = findViewById(R.id.rv_project);
         fbtnAddProject = findViewById(R.id.fbtn_add_project);
 
@@ -39,14 +36,6 @@ public class ProjectActivity extends AppCompatActivity {
             Intent myIntent = new Intent(ProjectActivity.this, LoginActivity.class);
             startActivity(myIntent);
             finish();
-        });
-        btnGoMaterials.setOnClickListener(v -> {
-            Intent myIntent = new Intent(ProjectActivity.this, MaterialActivity.class);
-            startActivity(myIntent);
-        });
-        btnGoWorkers.setOnClickListener(v -> {
-            Intent myIntent = new Intent(ProjectActivity.this, WorkerActivity.class);
-            startActivity(myIntent);
         });
         fbtnAddProject.setOnClickListener(v -> {
             AddProjectActivity addProject = new AddProjectActivity();

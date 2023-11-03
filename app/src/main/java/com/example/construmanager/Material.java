@@ -2,7 +2,9 @@ package com.example.construmanager;
 
 public class Material {
     String projectId,name,amountMissing,amountAvailable,amountPayed,amountOwed,price;
-    public Material() {}
+    public Material() {
+
+    }
     public Material(String projectId, String name, String price) {
         this.projectId = projectId;
         this.name = name;

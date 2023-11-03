@@ -54,16 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
-        <Button
-            android:id="@+id/btn_go_materials"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Test Materials"/>
-        <Button
-            android:id="@+id/btn_go_workers"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Test Workers"/>
+
     </LinearLayout>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fbtn_add_project"
