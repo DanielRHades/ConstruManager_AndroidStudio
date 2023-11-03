@@ -24,6 +24,7 @@ import java.util.ArrayList;
 
 public class WorkerActivity extends AppCompatActivity {
     private String projectId;
+    private ImageView ivBack;
     private RecyclerView recyclerView;
     private Button btnGoMaterials, btnGoWorkers,btnGoStatistics;
     private FloatingActionButton fbtnAddWorker;
@@ -39,6 +40,13 @@ public class WorkerActivity extends AppCompatActivity {
         fbtnAddWorker.setOnClickListener(v -> {
             AddWorkersActivity addWorker = new AddWorkersActivity(projectId);
             addWorker.show(getSupportFragmentManager(),"");
+        });
+
+        ivBack = findViewById(R.id.iv_back);
+        ivBack.setOnClickListener(v -> {
+            Intent myIntent = new Intent(WorkerActivity.this, ProjectActivity.class);
+            startActivity(myIntent);
+            finish();
         });
 
         btnGoMaterials = findViewById(R.id.btn_go_materials);
