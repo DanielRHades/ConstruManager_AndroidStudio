@@ -4,146 +4,149 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_gravity="center"
     android:layout_marginHorizontal="20dp"
-    android:background="@drawable/body_activity2"
 
+    android:background="@drawable/body_activity2"
     android:padding="20dp"
     tools:context=".AddMaterialActivity">
 
-        <ImageView
-            android:id="@+id/iv_back"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/return_arrow"
-            app:layout_constraintTop_toTopOf="@id/tv_name_material"
-            app:layout_constraintBottom_toBottomOf="@id/tv_name_material"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/tv_name_material"
-            android:clickable="true"
-            />
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:clickable="true"
+        android:src="@drawable/return_arrow"
+        app:layout_constraintBottom_toBottomOf="@id/tv_name_material"
+        app:layout_constraintEnd_toStartOf="@id/tv_name_material"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_name_material"
+        />
+
+    <TextView
+        android:id="@+id/tv_name_material"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Nombre del material"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/ll_available"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_name_material">
+
         <TextView
-            android:id="@+id/tv_name_material"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="Nombre del material"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            android:layout_weight="0.25"
+            android:text="En inventario:"
+            android:textColor="@color/black" />
 
-        <LinearLayout
-            android:id="@+id/ll_available"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/tv_name_material"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.25"
-                android:textColor="@color/black"
-                android:text="En inventario:" />
-
-            <EditText
-                android:id="@+id/etxt_available_material"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/black"
-                android:inputType="text"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_missing"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/ll_available"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.25"
-                android:textColor="@color/black"
-                android:text="Faltantes:" />
-
-            <EditText
-                android:id="@+id/etxt_missing_material"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/black"
-                android:inputType="text"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_payed"
-            android:layout_width="match_parent"
+        <EditText
+            android:id="@+id/etxt_available_material"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/ll_missing"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            android:inputType="text"
+            android:textColor="@color/black" />
+    </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.25"
-                android:textColor="@color/black"
-                android:text="Cantidad Pagados:" />
+    <LinearLayout
+        android:id="@+id/ll_missing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_available">
 
-            <EditText
-                android:id="@+id/etxt_payed_material"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/black"
-                android:inputType="text"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_owed"
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/ll_payed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            android:layout_weight="0.25"
+            android:text="Faltantes:"
+            android:textColor="@color/black" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.25"
-                android:textColor="@color/black"
-                android:text="Cantidad Debidos:" />
-
-            <EditText
-                android:id="@+id/etxt_owed_material"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/black"
-                android:inputType="text"/>
-        </LinearLayout>
-        <Button
-            android:id="@+id/btn_edit_material"
-            android:layout_width="match_parent"
+        <EditText
+            android:id="@+id/etxt_missing_material"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Actualizar"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/default_yellow"
-            app:layout_constraintTop_toBottomOf="@id/ll_owed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="10dp"/>
+            android:layout_weight="1"
+            android:inputType="text"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_payed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_missing">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:text="Cantidad Pagados:"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/etxt_payed_material"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="text"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_owed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_payed">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:text="Cantidad Debidos:"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/etxt_owed_material"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="text"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_edit_material"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/default_yellow"
+        android:text="Actualizar"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_owed" />
 </androidx.constraintlayout.widget.ConstraintLayout>

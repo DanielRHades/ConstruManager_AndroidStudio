@@ -1,5 +1,6 @@
 package com.example.construmanager;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,9 @@ public class MaterialAdapter extends FirebaseRecyclerAdapter<Material,MaterialAd
     @Override
     protected void onBindViewHolder(@NonNull MaterialAdapter.myViewHolder holder, int position, @NonNull Material model) {
         holder.projectId = model.getProjectId();
+        holder.materialId = model.getMaterialId();
+        holder.name = model.getName();
+        holder.price = model.getPrice();
         holder.tvNameMaterial.setText(model.getName());
     }
     // Carga el layout de los items
@@ -38,7 +42,10 @@ public class MaterialAdapter extends FirebaseRecyclerAdapter<Material,MaterialAd
         return new myViewHolder(view);
     }
     class myViewHolder extends RecyclerView.ViewHolder{
+        String materialId;
         String projectId;
+        String name;
+        int price;
         TextView tvNameMaterial;
         ImageButton ibtnCollapse;
         Button btnEditar;
@@ -63,10 +70,15 @@ public class MaterialAdapter extends FirebaseRecyclerAdapter<Material,MaterialAd
                     isCollapsed = true;
                 }
             });
-            /*btnEditar.setOnClickListener(v -> {
-                EditMaterialActivity editMaterial = new EditMaterialActivity(projectId);
-                editMaterial.show(editMaterial.getParentFragmentManager(), "");
-            });*/
+             btnEditar.setOnClickListener(v -> {
+            // Manda al usuario a la vista de regitro al interactuar con el texto resaltado
+            Intent myIntent = new Intent(btnEditar.getContext(), EditMaterialActivity.class);
+            myIntent.putExtra("projectId", projectId);
+            myIntent.putExtra("materialId", materialId);
+            myIntent.putExtra("name", name);
+            myIntent.putExtra("price", price);
+            btnEditar.getContext().startActivity(myIntent);
+        });
         }
     }
 }

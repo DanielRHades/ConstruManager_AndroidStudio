@@ -1,27 +1,26 @@
 package com.example.construmanager;
 
 public class Material {
-    String projectId,name,amountMissing,amountAvailable,amountPayed,amountOwed,price;
+    private String projectId,materialId,name,amountMissing,amountAvailable,amountPayed,amountOwed;
+    private int price;
     public Material() {
 
     }
-    public Material(String projectId, String name, String price) {
+    public Material(String projectId, String materialId, String name, int price) {
         this.projectId = projectId;
+        this.materialId = materialId;
         this.name = name;
         this.price = price;
     }
-    public Material(String amountAvailable, String amountMissing, String amountPayed, String amountOwed) {
+    public Material(String projectId, String materialId, String name, int price, String amountAvailable, String amountMissing, String amountPayed, String amountOwed) {
+        this.projectId = projectId;
+        this.materialId = materialId;
+        this.name = name;
+        this.price = price;
         this.amountAvailable = amountAvailable;
         this.amountMissing = amountMissing;
         this.amountPayed = amountPayed;
         this.amountOwed = amountOwed;
-    }
-    public String getAmountMissing() {
-        return amountMissing;
-    }
-
-    public void setAmountMissing(String amountMissing) {
-        this.amountMissing = amountMissing;
     }
 
     public String getProjectId() {
@@ -30,6 +29,22 @@ public class Material {
 
     public void setProjectId(String projectId) {
         this.projectId = projectId;
+    }
+
+    public String getAmountMissing() {
+        return amountMissing;
+    }
+
+    public void setAmountMissing(String amountMissing) {
+        this.amountMissing = amountMissing;
+    }
+
+    public String getMaterialId() {
+        return materialId;
+    }
+
+    public void setMaterialId(String materialId) {
+        this.materialId = materialId;
     }
 
     public String getName() {
@@ -64,11 +79,11 @@ public class Material {
         this.amountOwed = amountOwed;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 }

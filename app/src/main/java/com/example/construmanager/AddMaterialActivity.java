@@ -19,8 +19,10 @@ import android.widget.TextView;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.UUID;
+
 public class AddMaterialActivity extends DialogFragment {
-    private String projectId;
+    private String projectId, materialId;
     private EditText editTextName, editTextPrice;
     private Button btnAdd;
     public AddMaterialActivity(String projectId) {
@@ -37,17 +39,18 @@ public class AddMaterialActivity extends DialogFragment {
         editTextName = dialogView.findViewById(R.id.etxt_name_material);
         editTextPrice = dialogView.findViewById(R.id.etxt_price_material);
         btnAdd = dialogView.findViewById(R.id.btn_add_material);
+        materialId= String.valueOf(UUID.randomUUID());
 
         btnAdd.setOnClickListener(v -> {
             String name = editTextName.getText().toString();
-            String price = editTextPrice.getText().toString();
+            int price =Integer.parseInt(editTextPrice.getText().toString());
             FirebaseDatabase instance = FirebaseDatabase.getInstance();
 
-            Material newMaterial = new Material(projectId, name, price);
+            Material newMaterial = new Material(projectId, materialId, name, price);
             instance.getReference("Projects")
                     .child(projectId)
                     .child("Materials")
-                    .child(name).setValue(newMaterial);
+                    .child(materialId).setValue(newMaterial);
             dismiss();
         });
 
