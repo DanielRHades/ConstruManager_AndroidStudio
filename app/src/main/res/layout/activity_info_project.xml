@@ -12,20 +12,62 @@
         android:layout_height="40dp"
         android:src="@drawable/return_arrow"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/selector"
+        app:layout_constraintBottom_toBottomOf="@id/selector"
         android:layout_margin="20dp"/>
+    <LinearLayout
+        android:id="@+id/selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginVertical="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/body_activity2"
+        android:weightSum=".9"
+        android:paddingHorizontal="10dp">
+
+        <Button
+            android:id="@+id/btn_go_materials"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".3"
+            android:gravity="center"
+            app:icon="@drawable/box"
+            app:iconTint="@color/default_yellow"
+            android:backgroundTint="@color/black"/>
+        <Button
+            android:id="@+id/btn_go_workers"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/group"
+            android:layout_weight=".3"
+            app:iconTint="@color/default_yellow"
+            android:backgroundTint="@color/disabled_grey"/>
+        <Button
+            android:id="@+id/btn_go_statistics"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/statistical"
+            android:layout_weight=".3"
+            app:iconTint="@color/default_yellow"
+            android:backgroundTint="@color/disabled_grey"/>
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_info_project"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_back" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fbtn_add_material"
+        android:id="@+id/fbtn_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"

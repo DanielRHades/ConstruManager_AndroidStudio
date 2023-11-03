@@ -16,16 +16,6 @@ tools:context=".EditMaterialActivity">
     app:layout_constraintEnd_toEndOf="parent"
     android:layout_marginHorizontal="20dp"
     android:padding="20dp">
-    <ImageView
-        android:id="@+id/iv_back"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/return_arrow"
-        app:layout_constraintTop_toTopOf="@id/tv_add_material"
-        app:layout_constraintBottom_toBottomOf="@id/tv_add_material"
-        app:layout_constraintStart_toStartOf="parent"
-        />
-
     <TextView
         android:id="@+id/tv_add_material"
         android:layout_width="match_parent"
@@ -38,6 +28,15 @@ tools:context=".EditMaterialActivity">
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/return_arrow"
+        app:layout_constraintTop_toTopOf="@id/tv_add_material"
+        app:layout_constraintBottom_toBottomOf="@id/tv_add_material"
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
     <EditText
         android:id="@+id/etxt_name_material"
@@ -50,23 +49,10 @@ tools:context=".EditMaterialActivity">
         app:layout_constraintEnd_toEndOf="parent"
         android:ems="10"
         android:inputType="text"
-        android:text="NOMBRE"
+        android:hint="NOMBRE"
         android:textColor="@color/black"
         />
 
-    <EditText
-        android:id="@+id/etxt_amount_material"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etxt_name_material"
-        android:ems="10"
-        android:inputType="number"
-        tools:text="CANTIDAD"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/black"/>
 
     <EditText
         android:id="@+id/etxt_price_material"
@@ -75,15 +61,15 @@ tools:context=".EditMaterialActivity">
         android:layout_gravity="center_horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etxt_amount_material"
+        app:layout_constraintTop_toBottomOf="@id/etxt_name_material"
         android:ems="10"
         android:inputType="number"
-        android:text="PRECIO/UNIDAD"
+        android:hint="PRECIO/UNIDAD"
         android:layout_marginTop="20dp"
         android:textColor="@color/black"/>
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_add_material"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/etxt_price_material"

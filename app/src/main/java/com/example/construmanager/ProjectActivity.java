@@ -12,7 +12,9 @@ import android.widget.ImageView;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 public class ProjectActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -53,8 +55,11 @@ public class ProjectActivity extends AppCompatActivity {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        String userId = mAuth.getCurrentUser().getUid();
+        FirebaseDatabase instance = FirebaseDatabase.getInstance();
+        DatabaseReference projectsRef = instance.getReference().child("Projects");
         FirebaseRecyclerOptions<Project> options = new FirebaseRecyclerOptions.Builder<Project>()
-                .setQuery(FirebaseDatabase.getInstance().getReference().child("Projects"), Project.class)
+                .setQuery(projectsRef, Project.class)
                 .build();
 
         projectAdapter = new ProjectAdapter(options);

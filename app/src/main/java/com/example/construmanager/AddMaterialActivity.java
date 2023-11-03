@@ -16,9 +16,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class AddMaterialActivity extends DialogFragment {
-
+    private String projectId;
+    private EditText editTextName, editTextPrice;
+    private Button btnAdd;
+    public AddMaterialActivity(String projectId) {
+        this.projectId = projectId;
+    }
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -27,54 +33,24 @@ public class AddMaterialActivity extends DialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.activity_add_material, null);
 
-        builder.setView(dialogView).setMessage("Nuevo Material");
-// Handle the cancel button
+        editTextName = dialogView.findViewById(R.id.etxt_name_material);
+        editTextPrice = dialogView.findViewById(R.id.etxt_price_material);
+        btnAdd = dialogView.findViewById(R.id.btn_add_material);
 
-        /*btnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
+        btnAdd.setOnClickListener(v -> {
+            String name = editTextName.getText().toString();
+            String price = editTextPrice.getText().toString();
+            FirebaseDatabase instance = FirebaseDatabase.getInstance();
+
+            Material newMaterial = new Material(projectId, name, price);
+            instance.getReference("Projects")
+                    .child(projectId)
+                    .child("Materials")
+                    .child(name).setValue(newMaterial);
+            dismiss();
         });
 
-        btnOK.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                name = editTitleName.getText().toString().trim();
-                color = btnColor.getText().toString();
-
-                if (validateInputs(name, color)) {
-                    Category newCategory = new Category(name, color);
-                    CategoryActivity categoryActivity = new CategoryActivity();
-                    categoryActivity.saveCategory(newCategory);
-                    dismiss();
-                }
-            }
-        });*/
+        builder.setView(dialogView);
         return builder.create();
     }
-
-    /*private boolean validateInputs(String name, String color) {
-
-        boolean validate = true;
-        //validaciones
-        if (name.isEmpty()) {
-            tilNameNewCategory.setError(getString(R.string.text_required));
-            validate = false;
-        } else {
-            tilNameNewCategory.setError(null);
-        }
-        if (color.isEmpty() || color.equals("Color")) {
-            txtMsgColorInput.setVisibility(View.VISIBLE);
-            txtMsgColorInput.setText(getString(R.string.text_required));
-            validate = false;
-        } else {
-            txtMsgColorInput.setVisibility(View.INVISIBLE);
-            txtMsgColorInput.setText(getString(R.string.text_required));
-        }
-
-        return validate;
-    }*/
-
 }

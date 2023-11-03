@@ -141,5 +141,16 @@
                 android:textColor="@color/black"
                 android:inputType="text"/>
         </LinearLayout>
+        <Button
+            android:id="@+id/btn_edit_material"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Actualizar"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/default_yellow"
+            app:layout_constraintTop_toBottomOf="@id/ll_owed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="10dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,15 +16,18 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Map;
 import java.util.UUID;
 
 public class AddProjectActivity extends DialogFragment {
-    private String id,name,company,type,afiliates,address;
+    private String projectId,name,company,type,afiliates,address;
     private EditText editTxtName, editTxtCompany, editTxtType, editTxtAfilliates, editTxtaddress;
     private ImageView ivBack;
     private Button btnAccept;
@@ -46,45 +49,29 @@ public class AddProjectActivity extends DialogFragment {
         builder.setView(dialogView);
         ivBack.setOnClickListener(v -> dismiss());
 
-        btnAccept.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                id= UUID.randomUUID().toString();
-                name = String.valueOf(editTxtName.getText());
-                company = String.valueOf(editTxtCompany.getText());
-                type = String.valueOf(editTxtType.getText());
-                afiliates = String.valueOf(editTxtAfilliates.getText());
-                address = String.valueOf(editTxtaddress.getText());
+        btnAccept.setOnClickListener(v -> {
+            projectId= String.valueOf(UUID.randomUUID());
+            name = String.valueOf(editTxtName.getText());
+            company = String.valueOf(editTxtCompany.getText());
+            type = String.valueOf(editTxtType.getText());
+            afiliates = String.valueOf(editTxtAfilliates.getText());
+            address = String.valueOf(editTxtaddress.getText());
 
-                Project newProject = new Project(id,name,company,address,afiliates);
-                FirebaseDatabase.getInstance().getReference("Projects").child(id).setValue(newProject);
+            Project newProject = new Project(projectId,name,company,address,afiliates);
+            FirebaseDatabase.getInstance().getReference("Projects").child(projectId).setValue(newProject);
 
+            String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            FirebaseDatabase instance = FirebaseDatabase.getInstance();
+
+            Task<DataSnapshot> userWithEmail = instance.getReference("Workers").child(userId).get();
+            userWithEmail.addOnCompleteListener(task -> {
+                instance.getReference("Projects")
+                        .child(projectId)
+                        .child("Workers")
+                        .child(userId)
+                        .updateChildren((Map<String, Object>) task.getResult().getValue());
                 dismiss();
-            }
         });
-        return builder.create();
-    }
-    // Por ahora no valida nada :3
-    /*
-    private boolean validateInputs(String name, String color) {
-
-        boolean validate = true;
-        //validaciones
-        if (name.isEmpty()) {
-            tilNameNewCategory.setError(getString(R.string.text_required));
-            validate = false;
-        } else {
-            tilNameNewCategory.setError(null);
-        }
-        if (color.isEmpty() || color.equals("Color")) {
-            txtMsgColorInput.setVisibility(View.VISIBLE);
-            txtMsgColorInput.setText(getString(R.string.text_required));
-            validate = false;
-        } else {
-            txtMsgColorInput.setVisibility(View.INVISIBLE);
-            txtMsgColorInput.setText(getString(R.string.text_required));
-        }
-
-        return validate;
-    }*/
-}
+    });
+    return builder.create();
+}}
