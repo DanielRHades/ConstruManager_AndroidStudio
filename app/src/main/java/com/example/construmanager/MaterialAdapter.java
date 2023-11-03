@@ -69,5 +69,4 @@ public class MaterialAdapter extends FirebaseRecyclerAdapter<Material,MaterialAd
             });*/
         }
     }
-
 }

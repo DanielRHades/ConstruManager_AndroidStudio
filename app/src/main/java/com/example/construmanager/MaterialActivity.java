@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -14,6 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MaterialActivity extends AppCompatActivity {
     private String projectId;
+    private ImageView ivBack;
     private Button  btnGoMaterials, btnGoWorkers,btnGoStatistics;
     private RecyclerView recyclerView;
     private MaterialAdapter materialAdapter;
@@ -42,6 +44,13 @@ public class MaterialActivity extends AppCompatActivity {
         fbtnAddMaterial.setOnClickListener(v -> {
             AddMaterialActivity addMaterial = new AddMaterialActivity(projectId);
             addMaterial.show(getSupportFragmentManager(),"");
+        });
+
+        ivBack = findViewById(R.id.iv_back);
+        ivBack.setOnClickListener(v -> {
+            Intent myIntent = new Intent(MaterialActivity.this, ProjectActivity.class);
+            startActivity(myIntent);
+            finish();
         });
 
         recyclerView = findViewById(R.id.rv_info_project);

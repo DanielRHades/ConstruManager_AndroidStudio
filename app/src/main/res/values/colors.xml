@@ -2,8 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="default_yellow">#EED202</color>
-    <color name="PrimaryColor">#FFF300</color>
+    <color name="default_yellow">#eed202</color>
+    <color name="PrimaryColor">#eed202</color>
     <color name="disabled_grey">#424242</color>
 </resources>
 

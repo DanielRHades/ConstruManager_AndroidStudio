@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ public class RegisterActivity extends AppCompatActivity {
     private TextInputEditText tfEmail,tfName,tfJob,tfPassword,tfConfirmPassword;
     String name, job, email;
     private Button btnLogin;
+    private ImageView ivBack;
     private TextView tvGoLogin;
     private FirebaseAuth mAuth;
     private FirebaseDatabase fireDB;
@@ -35,10 +37,17 @@ public class RegisterActivity extends AppCompatActivity {
         tfJob = findViewById(R.id.tf_job);
         tfPassword = findViewById(R.id.tf_password);
         tfConfirmPassword = findViewById(R.id.tf_confirm_password);
+        ivBack = findViewById(R.id.iv_back);
         btnLogin = findViewById(R.id.btn_login);
         tvGoLogin = findViewById(R.id.tv_go_login);
         fireDB = FirebaseDatabase.getInstance();
         reference = fireDB.getReference();
+
+        ivBack.setOnClickListener(v -> {
+            Intent myIntent = new Intent(RegisterActivity.this, LoginActivity.class);
+            startActivity(myIntent);
+            finish();
+        });
 
         tvGoLogin.setOnClickListener(v -> {
             // Lo manda a la pantalla de inicio de sesión al interactuar con el texto resaltado

@@ -18,7 +18,7 @@ tools:context=".EditMaterialActivity">
     android:padding="20dp">
     <TextView
         android:id="@+id/tv_add_material"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:textColor="@color/black"
@@ -36,6 +36,7 @@ tools:context=".EditMaterialActivity">
         app:layout_constraintTop_toTopOf="@id/tv_add_material"
         app:layout_constraintBottom_toBottomOf="@id/tv_add_material"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv_add_material"
         />
 
     <EditText
