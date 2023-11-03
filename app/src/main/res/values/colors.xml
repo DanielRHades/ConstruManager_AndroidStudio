@@ -5,4 +5,5 @@
     <color name="default_yellow">#eed202</color>
     <color name="PrimaryColor">#eed202</color>
     <color name="disabled_grey">#424242</color>
+    <color name="transparent">#00000000</color>
 </resources>

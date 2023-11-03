@@ -3,21 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="20dp"
+    android:background="@drawable/body_activity2"
+
+    android:padding="20dp"
     tools:context=".AddMaterialActivity">
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/body_activity2"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginHorizontal="20dp"
-        android:padding="20dp">
         <ImageView
             android:id="@+id/iv_back"
             android:layout_width="40dp"
@@ -26,6 +18,8 @@
             app:layout_constraintTop_toTopOf="@id/tv_name_material"
             app:layout_constraintBottom_toBottomOf="@id/tv_name_material"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_name_material"
+            android:clickable="true"
             />
         <TextView
             android:id="@+id/tv_name_material"
@@ -94,7 +88,7 @@
         <LinearLayout
             android:id="@+id/ll_payed"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="horizontal"
             app:layout_constraintTop_toBottomOf="@id/ll_missing"
@@ -152,5 +146,4 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="10dp"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
