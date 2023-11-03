@@ -23,7 +23,6 @@ import java.util.Map;
 public class AddWorkersActivity extends DialogFragment {
     private String email, projectId;
     private EditText editTxtName;
-    private ImageView ivBack;
     private Button btnAccept;
     public AddWorkersActivity(String projectId) {
         this.projectId = projectId;
@@ -35,12 +34,10 @@ public class AddWorkersActivity extends DialogFragment {
                 new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.activity_add_workers, null);
-        ivBack = dialogView.findViewById(R.id.iv_back);
         btnAccept = dialogView.findViewById(R.id.btn_accept);
         editTxtName = dialogView.findViewById(R.id.edit_txt_email_worker);
 
         builder.setView(dialogView);
-        ivBack.setOnClickListener(v -> dismiss());
         btnAccept.setOnClickListener(v -> {
             email = String.valueOf(editTxtName.getText());
             FirebaseDatabase instance = FirebaseDatabase.getInstance();

@@ -37,6 +37,7 @@ public class ProjectActivity extends AppCompatActivity {
             startActivity(myIntent);
             finish();
         });
+
         fbtnAddProject.setOnClickListener(v -> {
             AddProjectActivity addProject = new AddProjectActivity();
             addProject.show(getSupportFragmentManager(),"");
@@ -44,7 +45,6 @@ public class ProjectActivity extends AppCompatActivity {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        String userId = mAuth.getCurrentUser().getUid();
         FirebaseDatabase instance = FirebaseDatabase.getInstance();
         DatabaseReference projectsRef = instance.getReference().child("Projects");
         FirebaseRecyclerOptions<Project> options = new FirebaseRecyclerOptions.Builder<Project>()

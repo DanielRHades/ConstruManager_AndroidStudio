@@ -14,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/ic_launcher_background"/>
+        android:src="@drawable/cm_logo"/>
 
     <LinearLayout
         android:layout_width="0dp"
