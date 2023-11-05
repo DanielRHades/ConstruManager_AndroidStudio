@@ -7,38 +7,48 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Map;
 
-public class EditMaterialActivity extends DialogFragment {
-    private String projectId;
+public class EditMaterialActivity extends AppCompatActivity {
+    private ImageView iv_back;
     private EditText editTextAvailable,editTextMissing, editTextPayed,editTextOwed;
     private Button btnEdit;
-    public EditMaterialActivity(String projectId) {
-        this.projectId = projectId;
-    }
+    private String projectId, materialId, name;
+    private int price;
     @NonNull
     @Override
-    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        AlertDialog.Builder builder =
-                new AlertDialog.Builder(getActivity());
-        LayoutInflater inflater = getActivity().getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.activity_edit_material, null);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_edit_material);
+        projectId = getIntent().getStringExtra("projectId");
+        materialId = getIntent().getStringExtra("materialId");
+        name = getIntent().getStringExtra("name");
+        price = getIntent().getIntExtra("price",0);
 
-        editTextAvailable = dialogView.findViewById(R.id.etxt_available_material);
-        editTextMissing = dialogView.findViewById(R.id.etxt_missing_material);
-        editTextPayed = dialogView.findViewById(R.id.etxt_payed_material);
-        editTextOwed = dialogView.findViewById(R.id.etxt_owed_material);
-        btnEdit = dialogView.findViewById(R.id.btn_edit_material);
+        editTextAvailable = findViewById(R.id.etxt_available_material);
+        editTextMissing = findViewById(R.id.etxt_missing_material);
+        editTextPayed = findViewById(R.id.etxt_payed_material);
+        editTextOwed = findViewById(R.id.etxt_owed_material);
+        btnEdit = findViewById(R.id.btn_edit_material);
+        iv_back = findViewById(R.id.iv_back);
 
-        builder.setView(dialogView);
+        iv_back.setOnClickListener(view -> {
+            Intent myIntent = new Intent(EditMaterialActivity.this, MaterialActivity.class);
+            startActivity(myIntent);
+            finish();
+        });
+
+
         btnEdit.setOnClickListener(v -> {
             String available = editTextAvailable.getText().toString();
             String missing = editTextMissing.getText().toString();
@@ -46,16 +56,16 @@ public class EditMaterialActivity extends DialogFragment {
             String owed = editTextOwed.getText().toString();
             FirebaseDatabase instance = FirebaseDatabase.getInstance();
 
-            Material newMaterial = new Material(available, missing, payed, owed);
+            Material newMaterial = new Material(projectId, materialId, name, price, available, missing, payed, owed);
             instance.getReference("Projects")
                     .child(projectId)
                     .child("Materials")
-                    .orderByChild("projectId")
-                    .equalTo(projectId)
-                    .getRef().updateChildren((Map<String, Object>) newMaterial);
-            dismiss();
-        });
+                    .child(materialId)
+                    .setValue(newMaterial);
 
-        return builder.create();
+            Intent myIntent = new Intent(EditMaterialActivity.this, MaterialActivity.class);
+            startActivity(myIntent);
+            finish();
+        });
     }
 }

@@ -3,30 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="20dp"
+    android:background="@drawable/body_activity2"
+    android:padding="20dp"
     tools:context=".AddProjectActivity">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:orientation="vertical"
-        android:background="@drawable/body_activity2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:padding="20dp">
-
-        <ImageView
-            android:id="@+id/iv_back"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/return_arrow"
-            android:backgroundTint="#00000000"
-            app:layout_constraintTop_toTopOf="@id/textView4"
-            app:layout_constraintBottom_toBottomOf="@id/textView4"
-            android:clickable="true"/>
 
         <TextView
             android:id="@+id/textView4"
@@ -111,5 +92,4 @@
             android:backgroundTint="@color/default_yellow"
             android:textColor="@color/black"
             android:text="Aceptar"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

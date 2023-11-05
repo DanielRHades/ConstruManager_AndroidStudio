@@ -8,9 +8,11 @@ import androidx.fragment.app.DialogFragment;
 
 import android.app.Dialog;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -29,7 +31,6 @@ import java.util.UUID;
 public class AddProjectActivity extends DialogFragment {
     private String projectId,name,company,type,afiliates,address;
     private EditText editTxtName, editTxtCompany, editTxtType, editTxtAfilliates, editTxtaddress;
-    private ImageView ivBack;
     private Button btnAccept;
     @NonNull
     @Override
@@ -38,7 +39,7 @@ public class AddProjectActivity extends DialogFragment {
                 new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.activity_add_project, null);
-        ivBack = dialogView.findViewById(R.id.iv_back);
+
         btnAccept = dialogView.findViewById(R.id.btn_accept);
         editTxtName = dialogView.findViewById(R.id.edit_txt_name_proyecto);
         editTxtCompany = dialogView.findViewById(R.id.edit_txt_name_empresa);
@@ -47,7 +48,6 @@ public class AddProjectActivity extends DialogFragment {
         editTxtaddress = dialogView.findViewById(R.id.edit_txt_direccion);
 
         builder.setView(dialogView);
-        ivBack.setOnClickListener(v -> dismiss());
 
         btnAccept.setOnClickListener(v -> {
             projectId= String.valueOf(UUID.randomUUID());
