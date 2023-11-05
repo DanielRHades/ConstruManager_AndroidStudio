@@ -48,7 +48,6 @@ public class EditMaterialActivity extends AppCompatActivity {
             finish();
         });
 
-
         btnEdit.setOnClickListener(v -> {
             String available = editTextAvailable.getText().toString();
             String missing = editTextMissing.getText().toString();
