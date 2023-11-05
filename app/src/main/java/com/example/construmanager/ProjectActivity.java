@@ -63,6 +63,6 @@ public class ProjectActivity extends AppCompatActivity {
     }
     protected void onStop() {
         super.onStop();
-        projectAdapter.stopListening();
+        projectAdapter.startListening();
     }
 }
