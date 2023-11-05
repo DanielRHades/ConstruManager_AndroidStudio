@@ -60,9 +60,6 @@ public class ProjectAdapter extends FirebaseRecyclerAdapter<Project,ProjectAdapt
             llInfoProject.setVisibility(View.GONE);
             isCollapsed = true;
 
-            tvNameProject.setOnClickListener(v -> {
-                Toast.makeText(tvNameProject.getContext(), id, Toast.LENGTH_SHORT).show();
-            });
             ivCollapse.setOnClickListener(v -> {
                 // Muestra el botón de editar si está oculto
                 if(isCollapsed){

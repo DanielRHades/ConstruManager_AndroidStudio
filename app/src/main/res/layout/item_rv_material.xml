@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:animateLayoutChanges="true"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:animateLayoutChanges="true">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -19,48 +19,113 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:orientation="vertical"
-            android:padding="8dp">
+            android:padding="15dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:weightSum="1"
                 android:orientation="horizontal"
                 android:background="@drawable/layout_bg">
 
                 <TextView
                     android:id="@+id/tv_name_material"
-                    android:layout_width="300dp"
-                    android:layout_height="50dp"
-                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".9"
                     android:baselineAligned="false"
                     android:padding="10dp"
                     android:text="Nombre del material"
                     android:textColor="@color/black"
                     android:textSize="22dp"
-                    android:textStyle="bold|italic" />
+                    android:textStyle="bold|italic"
+                    android:clickable="true"/>
 
-                <ImageButton
-                    android:id="@+id/ibtn_collapse"
-                    android:layout_width="80dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                <ImageView
+                    android:id="@+id/iv_collapse"
+                    android:layout_gravity="center"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_weight=".1"
                     android:backgroundTint="@color/white"
-                    android:src="@drawable/downward_arrow" />
+                    android:src="@drawable/downward_arrow"
+                    android:clickable="true"/>
             </LinearLayout>
-            <Button
-                android:id="@+id/btn_editar"
+            <LinearLayout
+                android:id="@+id/ll_info_project"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Editar"
-                android:textColor="@color/black"
-                android:textSize="20dp"
-                android:textStyle="italic"
-                android:backgroundTint="@color/PrimaryColor"
-                android:visibility="visible"/>
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:background="@drawable/layout_project"
+                    android:layout_marginVertical="10dp">
+
+
+                    <TextView
+                        android:id="@+id/tv_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="- Precio"
+                        android:textSize="18dp"
+                        android:textStyle="italic"
+                        android:textColor="@color/black"
+                        android:padding="5dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_available"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="- Disponibles"
+                        android:textSize="18dp"
+                        android:textStyle="italic"
+                        android:textColor="@color/black"
+                        android:padding="5dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_missing"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="- Faltantes"
+                        android:textSize="18dp"
+                        android:textStyle="italic"
+                        android:textColor="@color/black"
+                        android:padding="5dp"/>
+                    <TextView
+                        android:id="@+id/tv_payed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="- Pagados"
+                        android:textSize="18dp"
+                        android:textStyle="italic"
+                        android:textColor="@color/black"
+                        android:padding="5dp"/>
+                    <TextView
+                        android:id="@+id/tv_owed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="- Debidos"
+                        android:textSize="18dp"
+                        android:textStyle="italic"
+                        android:textColor="@color/black"
+                        android:padding="5dp"/>
+                </LinearLayout>
+                <Button
+                    android:id="@+id/btn_editar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@color/default_yellow"
+                    android:text="Editar"/>
+            </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -33,6 +35,11 @@ public class MaterialAdapter extends FirebaseRecyclerAdapter<Material,MaterialAd
         holder.name = model.getName();
         holder.price = model.getPrice();
         holder.tvNameMaterial.setText(model.getName());
+        holder.tvPrice.setText("Precio: " + String.valueOf(model.getPrice()));
+        holder.tvAvailable.setText("Disponibles: " + model.getAmountAvailable());
+        holder.tvMissing.setText("Faltantes: " + model.getAmountMissing());
+        holder.tvPayed.setText("Pagados: " + model.getAmountPayed());
+        holder.tvOwed.setText("Debidos: " + model.getAmountOwed());
     }
     // Carga el layout de los items
     @NonNull
@@ -46,27 +53,35 @@ public class MaterialAdapter extends FirebaseRecyclerAdapter<Material,MaterialAd
         String projectId;
         String name;
         int price;
-        TextView tvNameMaterial;
-        ImageButton ibtnCollapse;
+        TextView tvNameMaterial, tvPrice, tvAvailable, tvMissing,tvPayed, tvOwed;
+        ImageView ivCollapse;
         Button btnEditar;
         boolean isCollapsed;
+        LinearLayout llInfoProject;
         FragmentManager fragmentManager;
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
+            llInfoProject = itemView.findViewById(R.id.ll_info_project);
             tvNameMaterial = itemView.findViewById(R.id.tv_name_material);
-            ibtnCollapse = itemView.findViewById(R.id.ibtn_collapse);
+            tvPrice = itemView.findViewById(R.id.tv_price);
+            tvAvailable = itemView.findViewById(R.id.tv_available);
+            tvMissing = itemView.findViewById(R.id.tv_missing);
+            tvPayed = itemView.findViewById(R.id.tv_payed);
+            tvOwed = itemView.findViewById(R.id.tv_owed);
+            ivCollapse = itemView.findViewById(R.id.iv_collapse);
             btnEditar = itemView.findViewById(R.id.btn_editar);
-            btnEditar.setVisibility(View.GONE);
+            llInfoProject.setVisibility(View.GONE);
             isCollapsed = true;
-            ibtnCollapse.setOnClickListener(v -> {
+
+            ivCollapse.setOnClickListener(v -> {
                 // Muestra el botón de editar si está oculto
                 if(isCollapsed){
-                    ibtnCollapse.setImageResource(R.drawable.upward_arrow);
-                    btnEditar.setVisibility(View.VISIBLE);
+                    ivCollapse.setImageResource(R.drawable.upward_arrow);
+                    llInfoProject.setVisibility(View.VISIBLE);
                     isCollapsed = false;
                 }else{
-                    ibtnCollapse.setImageResource(R.drawable.downward_arrow);
-                    btnEditar.setVisibility(View.GONE);
+                    ivCollapse.setImageResource(R.drawable.downward_arrow);
+                    llInfoProject.setVisibility(View.GONE);
                     isCollapsed = true;
                 }
             });
