@@ -22,11 +22,13 @@ public class ProjectActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private ImageView ivLogout;
     private FloatingActionButton fbtnAddProject;
+    private String userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project);
         mAuth = FirebaseAuth.getInstance();
+        userId = mAuth.getCurrentUser().getUid();
         ivLogout = findViewById(R.id.iv_logout);
         recyclerView = findViewById(R.id.rv_project);
         fbtnAddProject = findViewById(R.id.fbtn_add_project);
@@ -39,16 +41,16 @@ public class ProjectActivity extends AppCompatActivity {
         });
 
         fbtnAddProject.setOnClickListener(v -> {
-            AddProjectActivity addProject = new AddProjectActivity();
+            AddProjectActivity addProject = new AddProjectActivity(projectAdapter);
             addProject.show(getSupportFragmentManager(),"");
         });
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        FirebaseDatabase instance = FirebaseDatabase.getInstance();
-        DatabaseReference projectsRef = instance.getReference().child("Projects");
         FirebaseRecyclerOptions<Project> options = new FirebaseRecyclerOptions.Builder<Project>()
-                .setQuery(projectsRef, Project.class)
+                .setQuery(FirebaseDatabase.getInstance().getReference("Workers")
+                        .child(userId)
+                        .child("Projects"), Project.class)
                 .build();
 
         projectAdapter = new ProjectAdapter(options);
@@ -61,6 +63,6 @@ public class ProjectActivity extends AppCompatActivity {
     }
     protected void onStop() {
         super.onStop();
-        projectAdapter.startListening();
+        projectAdapter.stopListening();
     }
 }
