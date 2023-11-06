@@ -23,7 +23,7 @@ public class EditMaterialActivity extends AppCompatActivity {
     private ImageView iv_back;
     private EditText editTextAvailable,editTextMissing, editTextPayed,editTextOwed;
     private Button btnEdit;
-    private String projectId, materialId, name;
+    private String projectId, materialId, name,available,missing,payed,owed;
     private int price;
     @NonNull
     @Override
@@ -34,6 +34,10 @@ public class EditMaterialActivity extends AppCompatActivity {
         materialId = getIntent().getStringExtra("materialId");
         name = getIntent().getStringExtra("name");
         price = getIntent().getIntExtra("price",0);
+        available = getIntent().getStringExtra("available");
+        missing = getIntent().getStringExtra("missing");
+        payed = getIntent().getStringExtra("payed");
+        owed = getIntent().getStringExtra("owed");
 
         editTextAvailable = findViewById(R.id.etxt_available_material);
         editTextMissing = findViewById(R.id.etxt_missing_material);
@@ -42,8 +46,14 @@ public class EditMaterialActivity extends AppCompatActivity {
         btnEdit = findViewById(R.id.btn_edit_material);
         iv_back = findViewById(R.id.iv_back);
 
+        editTextAvailable.setText(available);
+        editTextMissing.setText(missing);
+        editTextPayed.setText(payed);
+        editTextOwed.setText(owed);
+
         iv_back.setOnClickListener(view -> {
             Intent myIntent = new Intent(EditMaterialActivity.this, MaterialActivity.class);
+            myIntent.putExtra("id",projectId);
             startActivity(myIntent);
             finish();
         });
@@ -63,6 +73,7 @@ public class EditMaterialActivity extends AppCompatActivity {
                     .setValue(newMaterial);
 
             Intent myIntent = new Intent(EditMaterialActivity.this, MaterialActivity.class);
+            myIntent.putExtra("id",projectId);
             startActivity(myIntent);
             finish();
         });

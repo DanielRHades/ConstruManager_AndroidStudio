@@ -67,7 +67,6 @@ public class AddWorkersActivity extends DialogFragment {
                 }
 
             });
-
             dismiss();
         });
         return builder.create();

@@ -54,15 +54,8 @@ public class ProjectActivity extends AppCompatActivity {
                 .build();
 
         projectAdapter = new ProjectAdapter(options);
+        projectAdapter.startListening();
         recyclerView.setAdapter(projectAdapter);
 
-    }
-    protected void onStart() {
-        super.onStart();
-        projectAdapter.startListening();
-    }
-    protected void onStop() {
-        super.onStop();
-        projectAdapter.startListening();
     }
 }

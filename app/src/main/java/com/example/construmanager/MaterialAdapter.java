@@ -34,6 +34,10 @@ public class MaterialAdapter extends FirebaseRecyclerAdapter<Material,MaterialAd
         holder.materialId = model.getMaterialId();
         holder.name = model.getName();
         holder.price = model.getPrice();
+        holder.amountAvailable = model.getAmountAvailable();
+        holder.amountMissing = model.getAmountMissing();
+        holder.amountPayed = model.getAmountPayed();
+        holder.amountOwed = model.getAmountOwed();
         holder.tvNameMaterial.setText(model.getName());
         holder.tvPrice.setText("Precio: " + String.valueOf(model.getPrice()));
         holder.tvAvailable.setText("Disponibles: " + model.getAmountAvailable());
@@ -49,9 +53,7 @@ public class MaterialAdapter extends FirebaseRecyclerAdapter<Material,MaterialAd
         return new myViewHolder(view);
     }
     class myViewHolder extends RecyclerView.ViewHolder{
-        String materialId;
-        String projectId;
-        String name;
+        String materialId,projectId,name,amountAvailable,amountMissing,amountPayed,amountOwed;
         int price;
         TextView tvNameMaterial, tvPrice, tvAvailable, tvMissing,tvPayed, tvOwed;
         ImageView ivCollapse;
@@ -92,6 +94,10 @@ public class MaterialAdapter extends FirebaseRecyclerAdapter<Material,MaterialAd
             myIntent.putExtra("materialId", materialId);
             myIntent.putExtra("name", name);
             myIntent.putExtra("price", price);
+            myIntent.putExtra("available", amountAvailable);
+            myIntent.putExtra("missing", amountMissing);
+            myIntent.putExtra("payed", amountPayed);
+            myIntent.putExtra("owed", amountOwed);
             btnEditar.getContext().startActivity(myIntent);
         });
         }
