@@ -94,9 +94,10 @@ public class ProjectActivity extends AppCompatActivity {
     }
     private void preSearch(String s)
     {
+        String currentUser = mAuth.getCurrentUser().getUid();
         FirebaseDatabase instance = FirebaseDatabase.getInstance();
         FirebaseRecyclerOptions<Project> options = new FirebaseRecyclerOptions.Builder<Project>()
-                .setQuery(instance.getReference().child("Projects").orderByChild("name").startAt(s).endAt(s + "\uf8ff"), Project.class)
+                .setQuery(instance.getReference().child("Workers").child(currentUser).child("Projects").orderByChild("name").startAt(s).endAt(s + "\uf8ff"), Project.class)
                 .build();
 
         projectAdapter = new ProjectAdapter(options);
