@@ -48,8 +48,6 @@ public class ProjectActivity extends AppCompatActivity {
             addProject.show(getSupportFragmentManager(),"");
        });
 
-        setTitle("");
-
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         FirebaseRecyclerOptions<Project> options = new FirebaseRecyclerOptions.Builder<Project>()
@@ -76,21 +74,14 @@ public class ProjectActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 if(s.toString()!=null)
                 {
-
                     preSearch(s.toString());
-
                 }
                 else
                 {
-
                     preSearch("");
-
                 }
             }
         });
-
-
-
     }
     protected void onStart() {
         super.onStart();
@@ -100,10 +91,6 @@ public class ProjectActivity extends AppCompatActivity {
         super.onStop();
         projectAdapter.startListening();
     }
-
-
-
-
     private void preSearch(String s)
     {
         FirebaseDatabase instance = FirebaseDatabase.getInstance();
