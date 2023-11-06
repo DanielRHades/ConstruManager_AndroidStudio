@@ -30,6 +30,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 
 public class AddProjectActivity extends DialogFragment {
@@ -47,6 +48,7 @@ public class AddProjectActivity extends DialogFragment {
                 new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.activity_add_project, null);
+        projectAdapter.startListening();
 
         btnAccept = dialogView.findViewById(R.id.btn_accept);
         editTxtName = dialogView.findViewById(R.id.edit_txt_name_proyecto);
@@ -67,7 +69,7 @@ public class AddProjectActivity extends DialogFragment {
             Project newProject = new Project(projectId,name,company,address,afiliates);
             FirebaseDatabase.getInstance().getReference("Projects").child(projectId).setValue(newProject);
 
-            String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            String userId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
             FirebaseDatabase instance = FirebaseDatabase.getInstance();
 
             Task<DataSnapshot> userData = instance.getReference("Workers").child(userId).get();
@@ -89,6 +91,7 @@ public class AddProjectActivity extends DialogFragment {
                     });
                 }
             });
+            dismiss();
         });
     return builder.create();
 }}

@@ -57,6 +57,7 @@ public class ProjectActivity extends AppCompatActivity {
                 .build();
 
         projectAdapter = new ProjectAdapter(options);
+        projectAdapter.startListening();
         recyclerView.setAdapter(projectAdapter);
 
         editText.addTextChangedListener(new TextWatcher() {
@@ -103,5 +104,4 @@ public class ProjectActivity extends AppCompatActivity {
         recyclerView.setAdapter(projectAdapter);
 
     }
-
 }
