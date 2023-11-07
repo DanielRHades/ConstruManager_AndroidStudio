@@ -1,7 +1,11 @@
 package com.example.construmanager;
 
 public class Material {
-    private String projectId,materialId,name,amountMissing,amountAvailable,amountPayed,amountOwed;
+    private String projectId,materialId,name;
+    private String amountAvailable = "0";
+    private String amountMissing = "0";
+    private String amountPayed = "0";
+    private String amountOwed = "0";
     private int price;
     public Material() {
 
