@@ -67,24 +67,14 @@ public class MaterialActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.rv_info_project);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        // Actualmente no funcionando por razones desconocidas, revisar tambien el adapter.
         FirebaseRecyclerOptions<Material> options = new FirebaseRecyclerOptions.Builder<Material>()
                 .setQuery(FirebaseDatabase.getInstance().getReference("Projects")
                         .child(projectId)
                         .child("Materials"), Material.class)
                 .build();
         materialAdapter = new MaterialAdapter(options);
-        recyclerView.setAdapter(materialAdapter);
-    }
-    @Override
-    protected void onStart() {
-        super.onStart();
         materialAdapter.startListening();
-    }
-    @Override
-    protected void onStop() {
-        super.onStop();
-        materialAdapter.stopListening();
+        recyclerView.setAdapter(materialAdapter);
     }
 }
 

@@ -32,7 +32,7 @@ public class WorkerActivity extends AppCompatActivity {
 
 
         fbtnAddWorker.setOnClickListener(v -> {
-            AddWorkersActivity addWorker = new AddWorkersActivity(projectId);
+            AddWorkersActivity addWorker = new AddWorkersActivity(projectId,workerAdapter);
             addWorker.show(getSupportFragmentManager(),"");
         });
 
@@ -71,7 +71,9 @@ public class WorkerActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         FirebaseRecyclerOptions<Worker> options = new FirebaseRecyclerOptions.Builder<Worker>()
-                .setQuery(FirebaseDatabase.getInstance().getReference("Projects").child(projectId).child("Workers"), Worker.class)
+                .setQuery(FirebaseDatabase.getInstance().getReference("Projects")
+                        .child(projectId)
+                        .child("Workers"), Worker.class)
                 .build();
 
         workerAdapter = new WorkerAdapter(options);
