@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -26,6 +27,8 @@ public class MaterialActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info_project);
         projectId = getIntent().getStringExtra("id");
 
+
+
         btnGoMaterials = findViewById(R.id.btn_go_materials);
         btnGoWorkers = findViewById(R.id.btn_go_workers);
         btnGoStatistics = findViewById(R.id.btn_go_statistics);
@@ -34,12 +37,21 @@ public class MaterialActivity extends AppCompatActivity {
         btnGoStatistics.setBackgroundColor(getResources().getColor(R.color.disabled_grey));
         fbtnAddMaterial = findViewById(R.id.fbtn_add);
 
+
+        btnGoStatistics.setOnClickListener(v -> {
+            Intent intent = new Intent(MaterialActivity.this, BarChartActivity.class);
+            intent.putExtra("id", projectId);
+            startActivity(intent);
+            finish();
+        });
+
         btnGoWorkers.setOnClickListener(v -> {
             Intent intent = new Intent(MaterialActivity.this, WorkerActivity.class);
             intent.putExtra("id", projectId);
             startActivity(intent);
             finish();
         });
+
 
         fbtnAddMaterial.setOnClickListener(v -> {
             AddMaterialActivity addMaterial = new AddMaterialActivity(projectId);

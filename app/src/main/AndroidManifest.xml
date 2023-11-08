@@ -50,6 +50,12 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+        <activity
+            android:name=".BarChartActivity"
+            android:exported="false"
+            android:label="BarChartActivity"
+            android:theme="@style/Theme.ConstruManager"/>
+
     </application>
 
 </manifest>
