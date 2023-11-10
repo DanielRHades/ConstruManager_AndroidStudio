@@ -15,6 +15,9 @@
         android:theme="@style/Theme.ConstruManager"
         tools:targetApi="31">
         <activity
+            android:name=".GraficaActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddWorkersActivity"
             android:exported="false" />
         <activity
@@ -54,8 +57,7 @@
             android:name=".BarChartActivity"
             android:exported="false"
             android:label="BarChartActivity"
-            android:theme="@style/Theme.ConstruManager"/>
-
+            android:theme="@style/Theme.ConstruManager" />
     </application>
 
 </manifest>
