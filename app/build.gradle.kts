@@ -50,4 +50,5 @@ dependencies {
     implementation ("com.firebaseui:firebase-ui-database:8.0.2")
     implementation("com.github.PhilJay:MPAndroidChart:3.1.0")
 
+
 }

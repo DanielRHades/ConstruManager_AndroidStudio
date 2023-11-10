@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.github.mikephil.charting.charts.BarChart;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -21,13 +22,14 @@ public class MaterialActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private MaterialAdapter materialAdapter;
     private FloatingActionButton fbtnAddMaterial;
+    private BarChart barChart;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_project);
         projectId = getIntent().getStringExtra("id");
-
-
+        barChart = findViewById(R.id.barchart);
+        barChart.setVisibility(View.GONE);
 
         btnGoMaterials = findViewById(R.id.btn_go_materials);
         btnGoWorkers = findViewById(R.id.btn_go_workers);
